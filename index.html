@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="es-PE">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Softopia Perú - Sistema Integral para tu Empresa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+            },
+            colors: {
+              'softopia-blue': '#0f46bd',
+              'softopia-blue-dark': '#002e94',
+              'softopia-orange': '#f04e23',
+              'softopia-orange-dark': '#ee3a13',
+              'softopia-cyan': '#00b0ff',
+              'softopia-green': '#24b248',
+              'softopia-purple': '#701ab0',
+              'softopia-gold': '#ffab00',
+            },
+            animation: {
+              'float': 'float 4s ease-in-out infinite',
+              'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-softopia-blue/10 selection:text-softopia-blue">
+
+    <header id="app-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white border-b border-slate-100 py-4 shadow-xs">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
+        
+        <a href="#inicio" class="flex flex-col items-start select-none">
+          <div class="flex items-baseline gap-1.5 leading-none">
+            <span class="text-xl md:text-2xl font-black tracking-tight text-softopia-blue">
+              Softopia
+            </span>
+            <span class="text-sm md:text-base font-extrabold text-softopia-orange">
+              Perú
+            </span>
+          </div>
+          <span class="text-[7.5px] font-extrabold tracking-widest text-[#0f46bd]/85 uppercase mt-1">
+            Tecnología que impulsa tu negocio
+          </span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7">
+          <a href="#inicio" class="text-xs font-bold text-slate-600 hover:text-softopia-blue tracking-wide transition-colors">
+            Inicio
+          </a>
+          <a href="#sistema-modulos" class="text-xs font-bold text-slate-600 hover:text-softopia-blue tracking-wide transition-colors">
+            Módulos Incluidos
+          </a>
+          <a href="#pricing-planes" class="text-xs font-bold text-slate-600 hover:text-softopia-blue tracking-wide transition-colors">
+            Planes de Negocio
+          </a>
+          <a href="#contacto-directo" class="text-xs font-bold text-slate-600 hover:text-softopia-blue tracking-wide transition-colors">
+            Contacto
+          </a>
+        </nav>
+
+        <div class="hidden sm:flex items-center gap-4">
+          <a
+            id="header-wa-link"
+            href="https://wa.me/51923992629?text=Hola%20Softopia%2520Perú.%20Quiero%20más%20información%20del%20sistema."
+            target="_blank"
+            rel="noreferrer"
+            class="flex items-center gap-1.5 text-xs font-extrabold text-emerald-600 hover:text-emerald-500 transition-colors"
+          >
+            <i class="fa-solid fa-phone h-4 w-4"></i>
+            <span>Escríbenos por WhatsApp</span>
+          </a>
+
+          <a
+            href="#pricing-planes"
+            class="bg-softopia-blue hover:bg-softopia-blue-dark text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-md shadow-softopia-blue/20 transition-all duration-300 cursor-pointer"
+          >
+            Ver Planes
+          </a>
+        </div>
+
+        <button
+          id="mobile-drawer-btn"
+          class="lg:hidden p-2 text-slate-650 hover:text-softopia-blue focus:outline-hidden cursor-pointer"
+        >
+          <i class="fa-solid fa-bars h-6 w-6"></i>
+        </button>
+
+      </div>
+
+      <div id="mobile-drawer" class="hidden lg:hidden bg-white border-t border-slate-100 py-4 px-6 space-y-4 absolute top-full left-0 right-0 shadow-xl z-30">
+        <a href="#inicio" class="mobile-nav-link block text-sm font-bold text-slate-700 hover:text-softopia-blue py-1.5 border-b border-slate-50">Inicio</a>
+        <a href="#sistema-modulos" class="mobile-nav-link block text-sm font-bold text-slate-700 hover:text-softopia-blue py-1.5 border-b border-slate-50">Módulos Incluidos</a>
+        <a href="#pricing-planes" class="mobile-nav-link block text-sm font-bold text-slate-700 hover:text-softopia-blue py-1.5 border-b border-slate-50">Planes de Negocio</a>
+        <a href="#contacto-directo" class="mobile-nav-link block text-sm font-bold text-slate-700 hover:text-softopia-blue py-1.5">Contacto</a>
+        
+        <div class="pt-2 flex flex-col gap-2.5">
+          <a
+            href="https://wa.me/51923992629?text=Hola%20Softopia%2520Perú.%20Quiero%20recibir%20asesoría%20sobre%20el%20sistema%20de%20ventas."
+            target="_blank"
+            rel="noreferrer"
+            class="flex items-center justify-center gap-2 bg-emerald-50 text-emerald-700 py-3 rounded-xl text-xs font-bold transition-all hover:bg-emerald-100"
+          >
+            <i class="fa-solid fa-phone h-4 w-4"></i>
+            <span>Contacto por WhatsApp</span>
+          </a>
+          <a
+            href="#pricing-planes"
+            class="block text-center mobile-nav-link bg-softopia-blue text-white py-3 rounded-xl text-xs font-extrabold shadow-lg shadow-softopia-blue/15"
+          >
+            Ver Tarifas
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="relative pt-24 md:pt-32 pb-16 bg-[#f8fafc] overflow-hidden">
+      
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-softopia-blue/5 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-softopia-orange/5 rounded-full blur-3xl -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            
+            <div class="inline-flex items-center gap-2 justify-center lg:justify-start">
+              <span class="h-[1.5px] w-6 bg-softopia-blue"></span>
+              <span class="text-[10px] md:text-xs font-black tracking-widest text-[#0a3a9c] uppercase">
+                TECNOLOGÍA QUE IMPULSA TU NEGOCIO
+              </span>
+              <span class="h-[1.5px] w-6 bg-softopia-blue"></span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="inline-block bg-[#0f46bd] text-white text-xs md:text-sm font-black px-5 py-2 rounded-xl tracking-wide shadow-md uppercase">
+                SISTEMA INTEGRAL PARA TU EMPRESA
+              </div>
+
+              <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-none">
+                TODO LO QUE TU NEGOCIO NECESITA,<br />
+                <span class="text-softopia-orange bg-clip-text">EN UN SOLO SISTEMA</span>
+              </h1>
+            </div>
+
+            <p class="text-sm md:text-base text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Controla, vende, factura y gestiona tu empresa de forma rápida, segura y eficiente. El sistema de ventas preferido por restaurantes, ferreterías, bodegas, y empresas líderes en el Perú.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 pt-2 text-xs md:text-sm font-bold text-slate-750">
+              <div class="flex items-center gap-1.5">
+                <span class="h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-check text-xs text-emerald-600"></i>
+                </span>
+                <span>Homologado SUNAT</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-check text-xs text-emerald-600"></i>
+                </span>
+                <span>100% en la Nube</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-check text-xs text-emerald-600"></i>
+                </span>
+                <span>Instalación Inmediata</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
+              <a
+                href="#pricing-planes"
+                class="w-full sm:w-auto bg-softopia-blue hover:bg-softopia-blue-dark text-white font-extrabold text-xs md:text-sm px-8 py-4 rounded-full shadow-lg shadow-softopia-blue/20 flex items-center justify-center gap-2 transition-all duration-300"
+              >
+                <span>Solicitar Demo Gratuita</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+              <a
+                href="https://wa.me/51923992629?text=Hola%20Softopia%2520Perú.%20Quiero%20solicitar%20asesoría%20sobre%20el%20sistema%20para%20mi%20negocio."
+                target="_blank"
+                rel="noreferrer"
+                class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs md:text-sm px-7 py-4 rounded-full flex items-center justify-center gap-2 transition-all"
+              >
+                <span>Chatear con un Asesor</span>
+                <i class="fa-solid fa-comments text-emerald-600"></i>
+              </a>
+            </div>
+
+            <div class="bg-orange-50 border border-orange-200/80 rounded-2xl p-4 flex items-center gap-4 max-w-xl mx-auto lg:mx-0">
+              <div class="h-10 w-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-certificate text-softopia-orange text-lg"></i>
+              </div>
+              <div class="text-left">
+                <span class="text-[9px] text-[#f04e23] font-black uppercase tracking-wider">¡OFERTA DISPONIBLE!</span>
+                <p class="text-slate-700 text-xs font-semibold leading-tight mt-0.5">
+                  Adquiere tu plan anual y recibe el certificado digital tributario SUNAT gratis por 1 año para emitir facturas al instante.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col items-center justify-center">
+            <div class="bg-white border border-slate-200/80 shadow-2xl p-6 rounded-3xl w-full max-w-sm relative">
+              
+              <div class="absolute -top-3 right-4 bg-amber-400 text-slate-950 px-3 py-1 font-black rounded-lg text-[9px] uppercase tracking-wider shadow-md">
+                VENTA EFECTIVA
+              </div>
+
+              <!-- Interactive Tab Switcher -->
+              <div class="flex border border-slate-100 p-1 bg-slate-50/75 rounded-2xl mb-4">
+                <button id="mascot-tab-faq" type="button" class="flex-1 py-2 px-2.5 text-[10.5px] font-black rounded-xl bg-white text-softopia-blue shadow-xs border border-slate-200/40 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                  <i class="fa-solid fa-comments text-xs"></i>
+                  <span>Consultar Softi</span>
+                </button>
+                <button id="mascot-tab-quote" type="button" class="flex-1 py-2 px-2.5 text-[10.5px] font-black rounded-xl text-slate-500 hover:text-slate-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                  <span class="relative flex h-1.5 w-1.5 shrink-0">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-550"></span>
+                  </span>
+                  <span>Cotizar Sistema ⚡</span>
+                </button>
+              </div>
+
+              <!-- Smart Speech Bubble -->
+              <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 mb-4 relative min-h-[85px] flex items-center justify-center">
+                <p id="speech-bubble" class="text-slate-700 text-xs font-bold leading-relaxed text-center">
+                  <i class="fa-solid fa-robot text-softopia-blue mr-1.5"></i> Hola. Soy Softi. Dale clic a mis módulos de abajo o agrega productos al Punto de Venta (POS) interactivo para probar el sistema.
+                </p>
+                <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-slate-50 border-r border-b border-slate-100 rotate-45"></div>
+              </div>
+
+              <!-- VIEW 1: FAQ / GRAPHIC VIEW -->
+              <div id="mascot-faq-view" class="transition-all duration-300">
+                <div class="flex justify-center py-3 relative group">
+                  <div class="absolute inset-0 bg-cyan-200/20 rounded-full blur-2xl -z-10 animate-pulse-slow"></div>
+
+                  <svg class="h-36 w-36 drop-shadow-xl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="22" r="10" fill="#f04e23" />
+                    <line x1="100" y1="22" x2="100" y2="40" stroke="#1e293b" stroke-width="4" />
+                    <circle cx="100" cy="22" r="6" fill="#ff7a59" class="animate-pulse" />
+
+                    <rect x="52" y="65" width="10" height="25" rx="5" fill="#0f46bd" />
+                    <rect x="138" y="65" width="10" height="25" rx="5" fill="#0f46bd" />
+
+                    <rect x="60" y="40" width="80" height="75" rx="20" fill="#1e293b" stroke="#0f46bd" stroke-width="4" />
+                    
+                    <rect x="68" y="48" width="64" height="42" rx="10" fill="#0f172a" />
+
+                    <circle cx="85" cy="65" r="10" fill="#00b0ff" class="animate-pulse" />
+                    <circle cx="115" cy="65" r="10" fill="#00b0ff" class="animate-pulse" />
+                    <circle cx="85" cy="65" r="4" fill="#020617" />
+                    <circle cx="115" cy="65" r="4" fill="#020617" />
+                    
+                    <path d="M90 82 Q100 88 110 82" stroke="#00b0ff" stroke-width="3" stroke-linecap="round" fill="none" />
+
+                    <circle cx="75" cy="74" r="3" fill="#f04e23" opacity="0.8" />
+                    <circle cx="125" cy="74" r="3" fill="#f04e23" opacity="0.8" />
+
+                    <rect x="91" y="115" width="18" height="10" rx="3" fill="#475569" />
+
+                    <path d="M72 125 C72 125 60 148 55 160 C53 164 56 170 61 170 H139 C144 170 147 164 145 160 C140 148 128 125 128 125 Z" fill="#0f46bd" />
+
+                    <ellipse cx="100" cy="150" rx="20" ry="15" fill="#ffffff" />
+
+                    <text x="100" y="145" fill="#002e94" font-family="system-ui" font-size="8" font-weight="950" text-anchor="middle">SOFTOPIA</text>
+                    <text x="100" y="153" fill="#f04e23" font-family="system-ui" font-size="5" font-weight="900" text-anchor="middle">Perú</text>
+
+                    <path d="M72 135 C60 135 48 108 45 102" stroke="#1e293b" stroke-width="8" stroke-linecap="round" />
+                    <path d="M128 135 C140 135 148 152 152 160" stroke="#1e293b" stroke-width="8" stroke-linecap="round" />
+
+                    <rect x="85" y="170" width="8" height="15" fill="#475569" />
+                    <rect x="107" y="170" width="8" height="15" fill="#475569" />
+                    <rect x="78" y="183" width="22" height="7" rx="3" fill="#1e293b" />
+                    <rect x="100" y="183" width="22" height="7" rx="3" fill="#1e293b" />
+                  </svg>
+                </div>
+
+                <div class="mt-2 space-y-2">
+                  <button
+                    type="button"
+                    class="mascot-pre-btn w-full text-left bg-slate-50 hover:bg-softopia-blue/5 border border-slate-100 hover:border-softopia-blue/50 p-2.5 rounded-xl text-[10.5px] font-bold text-slate-700 transition-all flex items-center gap-1.5 cursor-pointer"
+                    data-speech="💡 ¡Excelente elección! Si necesitas un sistema homologado por SUNAT, todos nuestros comprobantes son electrónicos y se registran al instante. Prueba el POS de abajo agregando un producto."
+                  >
+                    <i class="fa-solid fa-chart-line text-softopia-blue text-xs shrink-0"></i>
+                    <span>¿Está homologado con SUNAT en el Perú?</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="mascot-pre-btn w-full text-left bg-slate-50 hover:bg-softopia-blue/5 border border-slate-100 hover:border-softopia-blue/50 p-2.5 rounded-xl text-[10.5px] font-bold text-slate-700 transition-all flex items-center gap-1.5 cursor-pointer"
+                    data-speech="🖥️ ¡Exacto! Funciona en laptops, tablets, celulares y computadoras de escritorio. Toda tu información se sincroniza en vivo en servidores en la nube con copias diarias de seguridad."
+                  >
+                    <i class="fa-solid fa-laptop text-softopia-blue text-xs shrink-0"></i>
+                    <span>¿Necesita instalación o funciona en web?</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- VIEW 2: MULTI-STEP LEAD CAPTURE SYSTEM -->
+              <div id="mascot-quote-view" class="hidden transition-all duration-300">
+                
+                <!-- Step 1: Rubro de Negocio -->
+                <div id="quote-step-1" class="space-y-3 animate-pop-in">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded-md">Paso 1 de 3</span>
+                    <span class="text-[9.5px] text-amber-500 font-bold flex items-center gap-1"><i class="fa-solid fa-gift"></i> Demo Gratis</span>
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-2">
+                    <button type="button" class="niche-opt-btn border border-slate-200 hover:border-softopia-blue hover:bg-softopia-blue/5 p-3 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center transition-all cursor-pointer group hover:scale-[1.02] active:scale-98" data-niche="Restaurante / Cafetería">
+                      <div class="h-8 w-8 rounded-full bg-slate-50 group-hover:bg-softopia-blue/10 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-utensils text-slate-500 group-hover:text-softopia-blue text-sm transition-colors"></i>
+                      </div>
+                      <span class="text-[10px] font-extrabold text-slate-700">Restaurantes</span>
+                    </button>
+                    <button type="button" class="niche-opt-btn border border-slate-200 hover:border-softopia-blue hover:bg-softopia-blue/5 p-3 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center transition-all cursor-pointer group hover:scale-[1.02] active:scale-98" data-niche="Ferretería / Comercial">
+                      <div class="h-8 w-8 rounded-full bg-slate-50 group-hover:bg-softopia-blue/10 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-screwdriver-wrench text-slate-500 group-hover:text-softopia-blue text-sm transition-colors"></i>
+                      </div>
+                      <span class="text-[10px] font-extrabold text-slate-700">Ferreterías</span>
+                    </button>
+                    <button type="button" class="niche-opt-btn border border-slate-200 hover:border-softopia-blue hover:bg-softopia-blue/5 p-3 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center transition-all cursor-pointer group hover:scale-[1.02] active:scale-98" data-niche="Tienda / Minimarket">
+                      <div class="h-8 w-8 rounded-full bg-slate-50 group-hover:bg-softopia-blue/10 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-basket-shopping text-slate-500 group-hover:text-softopia-blue text-sm transition-colors"></i>
+                      </div>
+                      <span class="text-[10px] font-extrabold text-slate-700">Tienda / Minimarket</span>
+                    </button>
+                    <button type="button" class="niche-opt-btn border border-slate-200 hover:border-softopia-blue hover:bg-softopia-blue/5 p-3 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center transition-all cursor-pointer group hover:scale-[1.02] active:scale-98" data-niche="Otra Empresa / Servicios">
+                      <div class="h-8 w-8 rounded-full bg-slate-50 group-hover:bg-softopia-blue/10 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-store text-slate-500 group-hover:text-softopia-blue text-sm transition-colors"></i>
+                      </div>
+                      <span class="text-[10px] font-extrabold text-slate-700">Otro Negocio</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2: Contact Details Form -->
+                <div id="quote-step-2" class="hidden space-y-3.5 animate-pop-in">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded-md">Paso 2 de 3</span>
+                    <button type="button" id="quote-back-to-1" class="text-[9.5px] text-slate-400 hover:text-slate-600 font-bold flex items-center gap-1 transition-colors bg-transparent border-none cursor-pointer">
+                      <i class="fa-solid fa-arrow-left"></i> Cambiar rubro
+                    </button>
+                  </div>
+
+                  <div class="space-y-3">
+                    <div>
+                      <div class="relative">
+                        <span class="absolute left-3.5 top-3 text-slate-400 text-xs">
+                          <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input 
+                          type="text" 
+                          id="quote-name" 
+                          placeholder="Escribe tu Nombre / Empresa" 
+                          class="w-full bg-slate-50 hover:bg-slate-100/75 focus:bg-white text-xs border border-slate-200 focus:border-softopia-blue focus:ring-4 focus:ring-softopia-blue/10 rounded-xl pl-9 pr-3.5 py-3 outline-none transition-all placeholder:text-slate-400 text-slate-800 font-bold" 
+                          required 
+                        />
+                      </div>
+                      <p id="quote-name-err" class="text-[10px] text-rose-500 font-extrabold mt-1 ml-1 hidden flex items-center gap-1">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>Por favor ingresa tu nombre o empresa</span>
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <div class="relative">
+                        <span class="absolute left-3.5 top-3 text-slate-400 text-xs">
+                          <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <input 
+                          type="tel" 
+                          id="quote-phone" 
+                          placeholder="WhatsApp o Celular (9 dígitos)" 
+                          class="w-full bg-slate-50 hover:bg-slate-100/75 focus:bg-white text-xs border border-slate-200 focus:border-softopia-blue focus:ring-4 focus:ring-softopia-blue/10 rounded-xl pl-9 pr-3.5 py-3 outline-none transition-all placeholder:text-slate-400 text-slate-800 font-bold" 
+                          maxlength="9" 
+                          required 
+                        />
+                      </div>
+                      <p id="quote-phone-err" class="text-[10px] text-rose-500 font-extrabold mt-1 ml-1 hidden flex items-center gap-1">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>Ingresa un WhatsApp válido de 9 dígitos (ej: 9XXXXXXXX)</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <button 
+                    type="button" 
+                    id="quote-submit-lead" 
+                    class="w-full bg-softopia-blue hover:bg-softopia-blue-dark text-white text-[11px] font-black py-3 rounded-xl transition-all shadow-md shadow-softopia-blue/15 cursor-pointer hover:scale-[1.02] active:scale-98 flex items-center justify-center gap-1.5"
+                  >
+                    <span>Generar Cotización</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                  </button>
+                </div>
+
+                <!-- Step 3: Success Proposal & Lead Reclaiming -->
+                <div id="quote-step-3" class="hidden space-y-3.5">
+                  <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <span class="text-[9px] text-emerald-500 font-extrabold uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded-md">¡Éxito! Paso 3 de 3</span>
+                    <span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+                  </div>
+
+                  <div class="text-center py-1">
+                    <div class="inline-flex h-9 w-9 bg-emerald-100 text-emerald-600 rounded-full items-center justify-center shadow-inner mb-2 animate-bounce-slow">
+                      <i class="fa-solid fa-check text-sm"></i>
+                    </div>
+                    <h5 class="text-xs font-black text-slate-900 leading-tight">¡Propuesta Optimizada Generada!</h5>
+                    <p id="quote-proposal-desc" class="text-[10px] text-slate-500 font-semibold leading-relaxed mt-1">
+                      Hemos configurado una demo perfecta para tu rubro.
+                    </p>
+                  </div>
+
+                  <!-- Exclusive Box -->
+                  <div class="bg-amber-50/70 border border-amber-200/60 rounded-xl p-3 text-left">
+                    <div class="flex items-center gap-1.5 mb-1">
+                      <i class="fa-solid fa-gift text-xs text-amber-500"></i>
+                      <span class="text-[9px] font-black text-amber-600 uppercase tracking-wide">Beneficio Técnico Desbloqueado</span>
+                    </div>
+                    <p class="text-[10px] font-medium text-slate-700 leading-tight">
+                      ✓ Demo Gratuita guiada + Certificado SUNAT 100% Bonificado por 1 año entero.
+                    </p>
+                  </div>
+
+                  <div class="space-y-2">
+                    <a 
+                      id="quote-final-wa-btn" 
+                      href="#" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      class="w-full bg-emerald-500 hover:bg-emerald-650 text-white text-[11px] font-black py-3 px-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-500/10 hover:scale-[1.02] active:scale-98 cursor-pointer"
+                    >
+                      <i class="fa-brands fa-whatsapp text-base"></i>
+                      <span>Solicitar Demo por WhatsApp</span>
+                    </a>
+                    
+                    <button 
+                      type="button" 
+                      id="quote-restart" 
+                      class="w-full text-slate-400 hover:text-slate-600 font-extrabold text-[9px] uppercase tracking-wider py-1 cursor-pointer bg-transparent border-none text-center block"
+                    >
+                      Volver a empezar
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Footer with version indicator -->
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center">
+                <p class="text-slate-400 text-[9px] font-bold tracking-widest uppercase">
+                  SOFTOPIA ASSISTANT V4.0
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="sistema-modulos" class="py-20 bg-slate-55 relative border-t border-slate-200/60">
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        
+        <div class="text-center mb-12 max-w-3xl mx-auto space-y-3.5">
+          <span class="bg-softopia-blue/10 text-softopia-blue text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block">
+            Modular y Escalable
+          </span>
+          <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+            Módulos del <span class="text-softopia-blue">Sistema Softopia</span>
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-base font-medium">
+            Módulos completos e integrados que interactúan con una base de datos centralizada. Configura solo los módulos que usas y crece a tu propio ritmo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div 
+            class="module-card group bg-white border border-slate-200/80 hover:border-softopia-blue rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-softopia-blue/5 cursor-pointer flex flex-col justify-between hover:scale-[1.01]"
+            data-speech="Módulo Punto de Venta (POS). Permite búsquedas veloces de productos, cobros con tarjeta, monederos digitales Yape, Plin, arqueo de caja e inventario simulado."
+          >
+            <div>
+              <div class="flex justify-between items-center">
+                <div class="h-12 w-12 rounded-xl bg-softopia-blue/10 group-hover:bg-softopia-blue group-hover:text-white text-softopia-blue flex items-center justify-center transition-all duration-300 shadow-xs">
+                  <i class="fa-solid fa-cash-register text-lg"></i>
+                </div>
+                <span class="bg-softopia-orange/10 text-softopia-orange text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full">
+                  ALTA VELOCIDAD
+                </span>
+              </div>
+              <h3 class="mt-5 text-slate-950 font-extrabold text-sm md:text-base group-hover:text-softopia-blue transition-colors">
+                Punto de Venta (POS)
+              </h3>
+              <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                Ventas rápidas y fluidas compatibles con lectoras de código de barras, gavetas, impresoras térmicas y balanzas de pesaje.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 group-hover:text-softopia-blue transition-colors font-semibold">
+              <span>Consultar detalle interactivo</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all"></i>
+            </div>
+          </div>
+
+          <div 
+            class="module-card group bg-white border border-slate-200/80 hover:border-softopia-blue rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-softopia-blue/5 cursor-pointer flex flex-col justify-between hover:scale-[1.01]"
+            data-speech="Módulo Facturación Electrónica. Homologado plenamente por SUNAT. Genera instantáneamente Facturas, Boletas, Notas de Crédito, Débito y comunicación de baja totalmente segura."
+          >
+            <div>
+              <div class="flex justify-between items-center">
+                <div class="h-12 w-12 rounded-xl bg-softopia-blue/10 group-hover:bg-softopia-blue group-hover:text-white text-softopia-blue flex items-center justify-center transition-all duration-300 shadow-xs">
+                  <i class="fa-solid fa-file-invoice-dollar text-lg"></i>
+                </div>
+                <span class="bg-softopia-orange/10 text-softopia-orange text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full">
+                  HOMOLOGADO SUNAT
+                </span>
+              </div>
+              <h3 class="mt-5 text-slate-950 font-extrabold text-sm md:text-base group-hover:text-softopia-blue transition-colors">
+                Facturación Electrónica
+              </h3>
+              <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                Facturación electrónica rápida integrada con PSE/OSE para sincronización automática sin retrasos reglamentarios o multas SUNAT.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 group-hover:text-softopia-blue transition-colors font-semibold">
+              <span>Consultar detalle interactivo</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all"></i>
+            </div>
+          </div>
+
+          <div 
+            class="module-card group bg-white border border-slate-200/80 hover:border-softopia-blue rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-softopia-blue/5 cursor-pointer flex flex-col justify-between hover:scale-[1.01]"
+            data-speech="Módulo Control de Inventario. Gestiona stock mínimo, alertas de desabastecimiento, kardex de productos ingresados, y asignación de almacenes por local comercial."
+          >
+            <div>
+              <div class="flex justify-between items-center">
+                <div class="h-12 w-12 rounded-xl bg-softopia-blue/10 group-hover:bg-softopia-blue group-hover:text-white text-softopia-blue flex items-center justify-center transition-all duration-300 shadow-xs">
+                  <i class="fa-solid fa-boxes-stacked text-lg"></i>
+                </div>
+                <span class="bg-softopia-orange/10 text-softopia-orange text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full">
+                  KARDEX VALORIZADO
+                </span>
+              </div>
+              <h3 class="mt-5 text-slate-950 font-extrabold text-sm md:text-base group-hover:text-softopia-blue transition-colors">
+                Control de Inventario
+              </h3>
+              <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                Controla tus existencias de forma rigurosa en tiempo real. Evita pérdidas y entérate de mermas de inmediato mediante historiales de stock.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 group-hover:text-softopia-blue transition-colors font-semibold">
+              <span>Consultar detalle interactivo</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all"></i>
+            </div>
+          </div>
+
+          <div 
+            class="module-card group bg-white border border-slate-200/80 hover:border-softopia-blue rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-softopia-blue/5 cursor-pointer flex flex-col justify-between hover:scale-[1.01]"
+            data-speech="Módulo Clientes y Proveedores. Mantén la cartera organizada. Valida DNI o RUC desde servidores de RENIEC y SUNAT con un solo clic."
+          >
+            <div>
+              <div class="flex justify-between items-center">
+                <div class="h-12 w-12 rounded-xl bg-softopia-blue/10 group-hover:bg-softopia-blue group-hover:text-white text-softopia-blue flex items-center justify-center transition-all duration-300 shadow-xs">
+                  <i class="fa-solid fa-users text-lg"></i>
+                </div>
+                <span class="bg-softopia-orange/10 text-softopia-orange text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full">
+                  VALIDACIÓN RENIEC/SUNAT
+                </span>
+              </div>
+              <h3 class="mt-5 text-slate-950 font-extrabold text-sm md:text-base group-hover:text-softopia-blue transition-colors">
+                Clientes y Proveedores
+              </h3>
+              <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                Historial completo de relaciones comerciales de consumo habitual, registros para ventas a crédito con un límite predefinido de deuda autorizada.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 group-hover:text-softopia-blue transition-colors font-semibold">
+              <span>Consultar detalle interactivo</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all"></i>
+            </div>
+          </div>
+
+          <div 
+            class="module-card group bg-white border border-slate-200/80 hover:border-softopia-blue rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-softopia-blue/5 cursor-pointer flex flex-col justify-between hover:scale-[1.01]"
+            data-speech="Módulo Cobros y Cartera. Permite registrar abonos parciales, controlar facturas por cobrar emitidas a crédito y enviar estados de cuenta automáticos por correo."
+          >
+            <div>
+              <div class="flex justify-between items-center">
+                <div class="h-12 w-12 rounded-xl bg-softopia-blue/10 group-hover:bg-softopia-blue group-hover:text-white text-softopia-blue flex items-center justify-center transition-all duration-300 shadow-xs">
+                  <i class="fa-solid fa-money-bill-trend-up text-lg"></i>
+                </div>
+                <span class="bg-softopia-orange/10 text-softopia-orange text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full">
+                  CONTROL DE RIESGO
+                </span>
+              </div>
+              <h3 class="mt-5 text-slate-950 font-extrabold text-sm md:text-base group-hover:text-softopia-blue transition-colors">
+                Cuentas por Cobrar / Pagar
+              </h3>
+              <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                Supervisa plazos de créditos comerciales para cobranzas oportunas con alertas de morosidad y evitar descapitalizaciones de caja operativa.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 group-hover:text-softopia-blue transition-colors font-semibold">
+              <span>Consultar detalle interactivo</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all"></i>
+            </div>
+          </div>
+
+          <div 
+            class="module-card group bg-white border border-slate-200/80 hover:border-softopia-blue rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-softopia-blue/5 cursor-pointer flex flex-col justify-between hover:scale-[1.01]"
+            data-speech="Módulo Reportes Gerenciales. Accede de inmediato a gráficos de ventas anuales, reporte de utilidad neta, balance de compras e IVA, y exportación ágil a Excel o PDF."
+          >
+            <div>
+              <div class="flex justify-between items-center">
+                <div class="h-12 w-12 rounded-xl bg-softopia-blue/10 group-hover:bg-softopia-blue group-hover:text-white text-softopia-blue flex items-center justify-center transition-all duration-300 shadow-xs">
+                  <i class="fa-solid fa-chart-pie text-lg"></i>
+                </div>
+                <span class="bg-softopia-orange/10 text-softopia-orange text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full">
+                  AUTO REPORTES
+                </span>
+              </div>
+              <h3 class="mt-5 text-slate-950 font-extrabold text-sm md:text-base group-hover:text-softopia-blue transition-colors">
+                Reportes Inteligentes
+              </h3>
+              <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                Visualización de indicadores comerciales mediante KPIs claros que ayudan a dueños de negocio del Perú a tomar decisiones fundamentadas en datos reales.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 group-hover:text-softopia-blue transition-colors font-semibold">
+              <span>Consultar detalle interactivo</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all"></i>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-16 bg-gradient-to-r from-softopia-blue to-softopia-blue-dark text-white rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-xl">
+          <div class="absolute -top-32 -left-32 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-32 -right-32 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+          
+          <div class="z-10 text-center md:text-left space-y-2">
+            <h3 class="text-xl md:text-2xl font-black tracking-tight text-white">
+              ¿Quieres ver cómo funciona para tu giro de negocio?
+            </h3>
+            <p class="text-white/90 text-xs md:text-sm max-w-xl font-medium leading-relaxed">
+              Damos asesoría y configuraciones iniciales gratuitas de 15 minutos en las que cargamos tu catálogo inicial de productos por videollamada.
+            </p>
+          </div>
+
+          <a
+            href="https://wa.me/51923992629?text=Hola%20Softopia%2520Perú.%20Quiero%20solicitar%20una%20demostración%20guiada%20gratuita."
+            target="_blank"
+            rel="noreferrer"
+            class="z-10 bg-[#f04e23] hover:bg-[#ee3a13] text-white text-xs font-black px-6 py-4 rounded-full shadow-lg border border-orange-500/30 shrink-0 select-none block text-center"
+          >
+            Solicitar Demo Guiada <i class="fa-solid fa-laptop ml-1"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="pricing-planes" class="py-20 bg-slate-50 relative overflow-hidden border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        
+        <div class="text-center mb-12 max-w-3xl mx-auto space-y-3">
+          <span class="bg-softopia-blue/10 text-softopia-blue text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block">
+            Tarifas transparentes
+          </span>
+          <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+            Planes que se <span class="text-softopia-orange">Adaptan a tu Negocio</span>
+          </h2>
+          <p class="text-slate-650 text-sm md:text-base font-medium">
+            Sin contratos forzosos. Elige la escala que tu negocio demanda hoy, con la opción de subir de plan libremente cuando crezcas.
+          </p>
+
+          <div class="mt-8 inline-flex items-center gap-3 bg-white border border-slate-200 p-1.5 rounded-full shadow-xs">
+            <button
+              id="billing-monthly-btn"
+              class="pricing-billing-toggle px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-softopia-blue text-white shadow-md"
+              data-billing="monthly"
+            >
+              Pago Mensual
+            </button>
+            <button
+              id="billing-yearly-btn"
+              class="pricing-billing-toggle px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer text-slate-500 hover:text-slate-800"
+              data-billing="yearly"
+            >
+              <span>Pago Anual</span>
+              <span class="bg-emerald-500/10 text-emerald-600 text-[9px] font-black px-2 py-0.5 rounded-full">
+                -20% DCTO
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-14 bg-white border border-slate-250/70 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-xs max-w-4xl mx-auto">
+          <div class="h-14 w-14 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100">
+            <i class="fa-solid fa-shield-halved text-amber-500 text-2xl"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-slate-950 text-base md:text-lg font-black tracking-tight">
+              Seguro, Confiable y Siempre Disponible
+            </h3>
+            <p class="mt-1 text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
+              Toda tu información contable y de ventas está protegida bajo cifrado SSL de nivel bancario. Respaldos automáticos diarios en servidores en la nube para garantizar continuidad operativa ante cualquier eventualidad.
+            </p>
+          </div>
+          <div class="bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 shrink-0 flex flex-col items-center">
+            <span class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Cumplimiento</span>
+            <span class="text-emerald-700 text-xs font-black uppercase mt-0.5 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-ping"></span>
+              99.9% UPTIME
+            </span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          
+          <div class="pricing-card flex flex-col justify-between bg-white border border-slate-205 rounded-2xl p-5 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-t-8 border-[#0f46bd]">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-slate-950 font-black text-xs md:text-sm tracking-tight">PLAN BASE</h3>
+                <span class="text-[9px] font-black uppercase tracking-wider text-[#0f46bd]">EMPEZAR</span>
+              </div>
+              <p class="mt-3 text-[10.5px] text-slate-500 font-medium leading-relaxed min-h-[44px]">
+                Ideal para bodegas y emprendimientos familiares que inician.
+              </p>
+              <div class="mt-4 pb-4 border-b border-slate-100 flex items-baseline gap-1">
+                <span class="text-slate-400 text-[10px] font-semibold">Desde S/</span>
+                <span id="price-base" class="pricing-val text-2xl font-black font-mono tracking-tight text-slate-900" data-base="50">50</span>
+                <span class="pricing-time text-slate-500 text-[10px] font-medium">/ mes</span>
+              </div>
+              <ul class="mt-4 space-y-2.5">
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-emerald-600 shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Punto de Venta (POS)</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-emerald-600 shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Facturación SUNAT (Boletas)</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-emerald-600 shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Inventario Básico</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-emerald-600 shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>1 Usuario</span>
+                </li>
+              </ul>
+            </div>
+            <button class="pricing-quote-btn mt-6 w-full py-2.5 rounded-xl text-xs font-black text-white bg-softopia-blue hover:bg-softopia-blue-dark transition-all shadow-md cursor-pointer" data-plan="PLAN BASE">
+              Cotizar Plan
+            </button>
+          </div>
+
+          <div class="pricing-card flex flex-col justify-between bg-white border border-slate-205 rounded-2xl p-5 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-t-8 border-[#24b248]">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-slate-950 font-black text-xs md:text-sm tracking-tight">PLAN CRECE</h3>
+                <span class="text-[9px] font-black uppercase tracking-wider text-[#24b248]">CRECER</span>
+              </div>
+              <p class="mt-3 text-[10.5px] text-slate-500 font-medium leading-relaxed min-h-[44px]">
+                Control mejorado para tiendas en crecimiento progresivo.
+              </p>
+              <div class="mt-4 pb-4 border-b border-slate-100 flex items-baseline gap-1">
+                <span class="text-slate-400 text-[10px] font-semibold">Desde S/</span>
+                <span id="price-crece" class="pricing-val text-2xl font-black font-mono tracking-tight text-slate-900" data-base="80">80</span>
+                <span class="pricing-time text-slate-500 text-[10px] font-medium">/ mes</span>
+              </div>
+              <ul class="mt-4 space-y-2.5">
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#24b248] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Todo del Plan Base</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#24b248] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Cuentas por Cobrar/Pagar</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#24b248] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Reportes Avanzados</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#24b248] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>2 Usuarios</span>
+                </li>
+              </ul>
+            </div>
+            <button class="pricing-quote-btn mt-6 w-full py-2.5 rounded-xl text-xs font-black text-white bg-softopia-blue hover:bg-softopia-blue-dark transition-all shadow-md cursor-pointer" data-plan="PLAN CRECE">
+              Cotizar Plan
+            </button>
+          </div>
+
+          <div class="pricing-card flex flex-col justify-between bg-white border border-slate-300 rounded-2xl p-5 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border-t-8 border-[#f04e23] ring-2 ring-softopia-orange/20">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#f04e23] text-white text-[8px] font-black uppercase px-3 py-0.5 rounded-full tracking-widest leading-none select-none">
+              RECOMENDADO
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-slate-950 font-black text-xs md:text-sm tracking-tight">EMPRENDEDOR</h3>
+                <span class="text-[9px] font-black uppercase tracking-wider text-[#f04e23]">POPULAR</span>
+              </div>
+              <p class="mt-3 text-[10.5px] text-slate-500 font-medium leading-relaxed min-h-[44px]">
+                Gestión estructurada para pymes modernas e independientes.
+              </p>
+              <div class="mt-4 pb-4 border-b border-slate-100 flex items-baseline gap-1">
+                <span class="text-slate-400 text-[10px] font-semibold">Desde S/</span>
+                <span id="price-emprendedor" class="pricing-val text-2xl font-black font-mono tracking-tight text-slate-900" data-base="130">130</span>
+                <span class="pricing-time text-slate-500 text-[10px] font-medium">/ mes</span>
+              </div>
+              <ul class="mt-4 space-y-2.5">
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#f04e23] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Todo del Plan Crece</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#f04e23] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Módulo Compras</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#f04e23] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Guías de Remisión</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#f04e23] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>3 Usuarios</span>
+                </li>
+              </ul>
+            </div>
+            <button class="pricing-quote-btn mt-6 w-full py-2.5 rounded-xl text-xs font-black text-white bg-softopia-orange hover:bg-softopia-orange-dark transition-all shadow-md cursor-pointer" data-plan="PLAN EMPRENDEDOR">
+              Cotizar Plan
+            </button>
+          </div>
+
+          <div class="pricing-card flex flex-col justify-between bg-white border border-slate-205 rounded-2xl p-5 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-t-8 border-[#701ab0]">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-slate-950 font-black text-xs md:text-sm tracking-tight">EMPRESARIAL</h3>
+                <span class="text-[9px] font-black uppercase tracking-wider text-[#701ab0]">CONTROL</span>
+              </div>
+              <p class="mt-3 text-[10.5px] text-slate-500 font-medium leading-relaxed min-h-[44px]">
+                Operación multi-sucursal integral y control centralizado.
+              </p>
+              <div class="mt-4 pb-4 border-b border-slate-100 flex items-baseline gap-1">
+                <span class="text-slate-400 text-[10px] font-semibold">Desde S/</span>
+                <span id="price-empresarial" class="pricing-val text-2xl font-black font-mono tracking-tight text-slate-900" data-base="180">180</span>
+                <span class="pricing-time text-slate-500 text-[10px] font-medium">/ mes</span>
+              </div>
+              <ul class="mt-4 space-y-2.5">
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#701ab0] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Todo de Emprendedor</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#701ab0] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Multiusuario Completo</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#701ab0] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Multisucursal (2 locales)</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#701ab0] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Reportes Personalizados</span>
+                </li>
+              </ul>
+            </div>
+            <button class="pricing-quote-btn mt-6 w-full py-2.5 rounded-xl text-xs font-black text-white bg-softopia-blue hover:bg-softopia-blue-dark transition-all shadow-md cursor-pointer" data-plan="PLAN EMPRESARIAL">
+              Cotizar Plan
+            </button>
+          </div>
+
+          <div class="pricing-card flex flex-col justify-between bg-white border border-slate-205 rounded-2xl p-5 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-t-8 border-[#ffab00]">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-slate-950 font-black text-xs md:text-xs tracking-tight flex items-center gap-1">
+                  <span>PREMIUM</span>
+                  <i class="fa-solid fa-crown text-amber-500"></i>
+                </h3>
+                <span class="text-[9px] font-black uppercase tracking-wider text-[#ffab00]">ILIMITADO</span>
+              </div>
+              <p class="mt-3 text-[10.5px] text-slate-500 font-medium leading-relaxed min-h-[44px]">
+                Escalamiento ilimitado sin barreras operativas para empresas líderes.
+              </p>
+              <div class="mt-4 pb-4 border-b border-slate-100 flex items-baseline gap-1">
+                <span class="text-slate-400 text-[10px] font-semibold">Desde S/</span>
+                <span id="price-premium" class="pricing-val text-2xl font-black font-mono tracking-tight text-slate-900" data-base="250">250</span>
+                <span class="pricing-time text-slate-500 text-[10px] font-medium">/ mes</span>
+              </div>
+              <ul class="mt-4 space-y-2.5">
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#ffab00] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Todo de Empresarial</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#ffab00] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Usuarios Ilimitados</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#ffab00] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Soporte Prioritario 24/7</span>
+                </li>
+                <li class="flex items-start gap-2 text-[10.5px] text-slate-600 font-medium leading-none">
+                  <span class="text-[#ffab00] shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span><span>Desarrollo de Módulos</span>
+                </li>
+              </ul>
+            </div>
+            <button class="pricing-quote-btn mt-6 w-full py-2.5 rounded-xl text-xs font-black text-slate-950 bg-[#ffab00] hover:bg-[#e09600] transition-all shadow-md cursor-pointer" data-plan="PLAN PREMIUM DE ALTO RENDIMIENTO">
+              Cotizar Plan
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contacto-directo" class="py-20 bg-white relative border-t border-slate-205">
+      <div class="max-w-4xl mx-auto px-4 md:px-6">
+        
+        <div class="bg-slate-950 rounded-3xl p-6 md:p-10 border border-slate-800 shadow-2xl relative overflow-hidden text-white">
+          <div class="absolute -top-32 -right-32 w-64 h-64 bg-softopia-blue/20 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-softopia-orange/20 rounded-full blur-3xl"></div>
+
+          <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div class="space-y-4">
+              <span class="bg-softopia-cyan/15 text-softopia-cyan text-[10px] font-black uppercase px-3.5 py-1.5 rounded-full tracking-wider">
+                SOPORTE DE ALTA CALIDAD
+              </span>
+              <h3 class="text-white text-2xl md:text-3xl font-black tracking-tight leading-snug">
+                ¿Listo para simplificar tus finanzas y aumentar ventas?
+              </h3>
+              <p class="text-slate-400 text-xs md:text-sm leading-relaxed font-medium">
+                Completa tus datos comerciales y me pondré en contacto contigo directamente. Si prefieres rapidez, puedes cotizar directamente arriba o iniciar un chat de soporte por WhatsApp.
+              </p>
+
+              <div class="space-y-3 pt-4 text-xs font-semibold text-slate-300">
+                <div class="flex items-center gap-2">
+                  <span class="h-5 w-5 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center font-bold">✓</span>
+                  <span>Alta comercial y asignación RUC en 24h.</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="h-5 w-5 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center font-bold">✓</span>
+                  <span>Migración Excel de inventario sin costo.</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="h-5 w-5 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center font-bold">✓</span>
+                  <span>Capacitaciones virtuales personalizadas.</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="contact-form-block" class="bg-slate-900 border border-slate-800 p-5 rounded-2xl relative">
+              
+              <div id="contact-success-overlay" class="hidden absolute inset-0 bg-slate-900 rounded-2xl flex flex-col items-center justify-center p-6 text-center space-y-3 z-10 animate-fade-in">
+                <div class="h-12 w-12 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl font-bold">✓</div>
+                <h4 class="text-white font-black text-sm">¡Consulta Recibida!</h4>
+                <p id="contact-success-msg" class="text-slate-400 text-xs leading-relaxed font-medium">
+                  Hemos enviado tu requerimiento a nuestro equipo. Te contactaremos en minutos.
+                </p>
+                <div class="pt-2">
+                  <a href="https://wa.me/51923992629?text=Hola%20Softopia%2520Perú.%20Acabo%20de%20completar%20mi%20registro%20comercial%20en%20su%20web." target="_blank" rel="noreferrer" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-[10px] px-4 py-2.5 rounded-xl block shadow-md">
+                    Priorizar por WhatsApp <i class="fa-solid fa-bolt ml-1"></i>
+                  </a>
+                </div>
+              </div>
+
+              <form id="contact-form" class="space-y-4">
+                <div>
+                  <label class="block text-slate-300 text-[10px] font-bold uppercase tracking-wider mb-1">Nombre</label>
+                  <input
+                    type="text"
+                    required
+                    id="sender-name"
+                    placeholder="Tu nombre completo"
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-200 placeholder:text-slate-600 focus:outline-hidden focus:border-softopia-cyan focus:bg-slate-950"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-slate-300 text-[10px] font-bold uppercase tracking-wider mb-1">Celular (Opcional)</label>
+                  <input
+                    type="tel"
+                    id="sender-phone"
+                    placeholder="Ejm: 987654321"
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-200 placeholder:text-slate-600 focus:outline-hidden focus:border-softopia-cyan focus:bg-slate-950"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-slate-300 text-[10px] font-bold uppercase tracking-wider mb-1">Tu Correo Electrónico</label>
+                  <input
+                    type="email"
+                    required
+                    id="sender-email"
+                    placeholder="correo@empresa.com"
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-200 placeholder:text-slate-600 focus:outline-hidden focus:border-softopia-cyan focus:bg-slate-950"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-slate-300 text-[10px] font-bold uppercase tracking-wider mb-1">Mensaje o Consulta</label>
+                  <textarea
+                    required
+                    id="sender-message"
+                    rows="2"
+                    placeholder="¿Cuál es tu rubro de negocio o qué requieres controlar?"
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-200 placeholder:text-slate-600 focus:outline-hidden focus:border-softopia-cyan focus:bg-slate-950"
+                  ></textarea>
+                </div>
+
+                <div class="pt-2">
+                  <button
+                    type="submit"
+                    class="w-full bg-softopia-blue hover:bg-softopia-blue-dark text-white text-xs font-black py-3 rounded-xl shadow-md cursor-pointer transition-all active:scale-98"
+                  >
+                    Enviar Consulta Comercial <i class="fa-solid fa-envelope ml-1"></i>
+                  </button>
+                </div>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-12">
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pb-8 border-b border-slate-800">
+          
+          <div class="md:col-span-5 space-y-4">
+            <div class="flex items-baseline gap-1.5 leading-none">
+              <span class="text-lg font-black text-white tracking-tight">Softopia</span>
+              <span class="text-xs font-extrabold text-[#f04e23]">Perú</span>
+            </div>
+            <p class="text-xs leading-relaxed text-slate-450 font-medium max-w-sm">
+              Brindamos soluciones informáticas robustas de punto de venta y facturación electrónica integradas con alta tecnología homologada por SUNAT en todo el Perú.
+            </p>
+          </div>
+
+          <div class="md:col-span-3 space-y-3">
+            <h4 class="text-xs font-black text-slate-200 uppercase tracking-widest">NAVEGACIÓN</h4>
+            <div class="flex flex-col gap-2 text-xs">
+              <a href="#inicio" class="hover:text-white transition-colors py-0.5">Inicio</a>
+              <a href="#sistema-modulos" class="hover:text-white transition-colors py-0.5">Módulos Incluidos</a>
+              <a href="#pricing-planes" class="hover:text-white transition-colors py-0.5">Tarifas y planes</a>
+              <a href="#contacto-directo" class="hover:text-white transition-colors py-0.5">Contacto</a>
+            </div>
+          </div>
+
+          <div class="md:col-span-4 space-y-3">
+            <h4 class="text-xs font-black text-slate-200 uppercase tracking-widest">CONTÁCTANOS</h4>
+            
+            <div class="space-y-3">
+              <a
+                href="https://wa.me/51923992629?text=Hola%2520Softopia%2520Perú.%20Necesito%20ayuda%20para%20elegir%20el%20sistema%20de%20ventas."
+                target="_blank"
+                rel="noreferrer"
+                class="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-emerald-500/20 max-w-xs"
+              >
+                <div class="flex h-4 w-4 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+                </div>
+                <span>Escríbenos por WhatsApp</span>
+              </a>
+
+              <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span>📍 Talara - Piura - Perú / Atención a nivel nacional</span>
+              </div>
+              <div class="text-[10px] text-slate-500 leading-relaxed font-semibold">
+                Soporte comercial disponible de Lunes a Sábado de 8:00 am a 8:00 pm.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-slate-500 font-bold tracking-wide uppercase">
+          <div>
+            <span>© 2026 SOFTOPIA PERÚ. TODOS LOS DERECHOS RESERVADOS.</span>
+          </div>
+          <div class="flex gap-4">
+            <span class="hover:text-slate-400 transition-all">SOPORTE TRIBUTARIO</span>
+            <span class="hover:text-slate-400 transition-all">CUMPLIMIENTO SUNAT</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <div id="softibot-floating-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      
+      <!-- Interactive Greeting Tooltip -->
+      <div id="softibot-tooltip" class="bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-xl border border-slate-800 flex items-center gap-2.5 mb-3 animate-tooltip-pulse cursor-pointer max-w-[280px] hover:bg-slate-850 transition-all select-none">
+        <div class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-550"></span>
+        </div>
+        <span class="leading-snug">¿Hola! ¿Tienes dudas o consultas? Conversa conmigo aquí 🤖</span>
+        <button id="close-softibot-tooltip" class="text-slate-400 hover:text-white ml-1 font-bold h-5 w-5 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-[10px] transition-colors">
+          ✕
+        </button>
+      </div>
+
+      <!-- Main Window Box -->
+      <div id="softibot-window" class="hidden w-[360px] max-w-[calc(100vw-32px)] bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden mb-4 transition-all duration-300 origin-bottom-right scale-95 opacity-0">
+        
+        <!-- Styled Glassmorphism Header -->
+        <div class="softibot-glass-header px-[18px] py-4 border-b border-slate-800 flex items-center justify-between shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 bg-softopia-blue rounded-xl flex items-center justify-center text-white relative shadow-sm border border-white/10">
+              <i class="fa-solid fa-robot text-lg text-white"></i>
+              <div class="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 bg-emerald-500 border-2.5 border-slate-900 rounded-full"></div>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h4 class="text-sm font-black text-white leading-none">SoftiBot</h4>
+                <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+              </div>
+              <span id="softibot-header-status" class="text-[9.5px] text-emerald-400 font-extrabold tracking-wide uppercase mt-1 block">Asistente Virtual Activo</span>
+            </div>
+          </div>
+          <button id="close-softibot" class="h-8 w-8 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-350 hover:text-white flex items-center justify-center border-none cursor-pointer transition-all hover:scale-105">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="softibot-messages-wrapper" class="flex-1 p-4 overflow-y-auto space-y-3 min-h-[285px] max-h-[330px] bg-slate-50 flex flex-col">
+          <div class="self-start bg-white border border-slate-150 text-slate-850 text-xs font-medium px-3.5 py-3 rounded-2xl rounded-tl-none max-w-[85%] leading-relaxed flex flex-col gap-1.5 shadow-xs animate-message-in">
+            <span>Hola! Soy SoftiBot, tu asistente inteligente de Softopia Perú. Bienvenido a nuestro centro de atención automatizado.</span>
+          </div>
+          <div class="self-start bg-white border border-slate-150 text-slate-850 text-xs font-medium px-3.5 py-3 rounded-2xl rounded-tl-none max-w-[85%] leading-relaxed shadow-xs animate-message-in" style="animation-delay: 0.15s">
+            <span>En qué puedo ayudarte hoy para automatizar, optimizar o proteger tu negocio en Talara y todo el norte peruano?</span>
+          </div>
+        </div>
+
+        <!-- Options Container -->
+        <div id="softibot-options-panel" class="p-3 bg-white border-t border-slate-100 space-y-1.5 flex flex-col">
+        </div>
+
+        <!-- NEW: Dynamic Text Search / Chat Input Form -->
+        <form id="softibot-input-form" class="px-3.5 py-3 border-t border-slate-100 bg-white flex items-center gap-2">
+          <input 
+            type="text" 
+            id="softibot-text-input" 
+            placeholder="Escribe tu duda libremente aquí..." 
+            class="flex-1 bg-slate-50 hover:bg-slate-100/90 focus:bg-white text-xs border border-slate-200 focus:border-softopia-blue focus:ring-4 focus:ring-softopia-blue/15 rounded-xl px-3.5 py-2.5 outline-none transition-all placeholder:text-slate-400 text-slate-800 font-medium"
+            autocomplete="off"
+            required
+          />
+          <button 
+            type="submit" 
+            class="h-9 w-9 rounded-xl bg-softopia-blue hover:bg-softopia-blue-dark text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shrink-0 shadow-md shadow-softopia-blue/20"
+            title="Enviar mensaje"
+          >
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+          </button>
+        </form>
+
+        <!-- Direct WhatsApp Backup Call-to-Action -->
+        <div class="px-[18px] py-2.5 border-t border-slate-100 bg-slate-50 flex flex-col gap-1.5">
+          <a id="softibot-direct-wa" href="https://wa.me/51923992629?text=Hola%20Softopia%2520Perú.%20Deseo%20conversar%20con%20un%20asesor%20humano." target="_blank" rel="noreferrer" class="w-full bg-emerald-500 hover:bg-emerald-650 text-white text-[10.5px] font-black py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-emerald-500/10">
+            <i class="fa-brands fa-whatsapp text-sm text-white"></i>
+            <span>Hablar con un Asesor Real por WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Action Button Launcher -->
+      <button id="softibot-launcher" class="h-14 w-14 rounded-full bg-softopia-blue hover:bg-softopia-blue-dark text-white flex items-center justify-center shadow-2xl cursor-pointer relative hover:scale-108 active:scale-95 transition-all group scale-100 animate-indicator-pulse z-40">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-softopia-blue opacity-35"></span>
+        <i class="fa-solid fa-robot text-xl absolute transition-all duration-300 group-hover:rotate-6 group-hover:scale-110"></i>
+        <div class="absolute -top-1 -right-1 h-4 w-4 bg-emerald-555 border-2 border-white rounded-full flex items-center justify-center">
+          <span class="animate-pulse h-1.5 w-1.5 bg-white rounded-full"></span>
+        </div>
+      </button>
+    </div>
+
+    <div id="plan-modal-container" class="hidden fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+      
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl relative animate-fade-in">
+        
+        <div id="plan-modal-ribbon" class="absolute top-0 left-0 right-0 h-2 bg-softopia-blue rounded-t-3xl"></div>
+
+        <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-5 mt-2">
+          <div>
+            <span class="text-[10px] text-slate-500 font-black uppercase tracking-wider block">Estás cotizando el</span>
+            <h3 id="plan-modal-name" class="text-lg md:text-xl font-extrabold text-softopia-blue mt-0.5">
+              PLAN ESPECIAL
+            </h3>
+          </div>
+          <button 
+            id="close-plan-modal"
+            class="h-7 w-7 text-slate-400 hover:text-slate-800 bg-slate-100 rounded-full flex items-center justify-center font-bold cursor-pointer text-sm"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200/80 p-4 rounded-xl mb-6 flex justify-between items-center">
+          <div>
+            <span class="text-[9px] text-slate-500 font-bold block uppercase tracking-wider">Precio Estimado</span>
+            <span id="plan-modal-rate" class="text-lg font-black text-slate-950 font-mono">S/ 0.00</span>
+            <span class="text-[11px] text-slate-400 font-medium">/ mes</span>
+          </div>
+          <div id="plan-modal-discount-tag" class="hidden bg-emerald-50 border border-emerald-150 text-emerald-800 text-[9px] font-black px-2.5 py-1 rounded-lg">
+            Anual (-20% DCTO)
+          </div>
+        </div>
+
+        <form id="plan-modal-form" class="space-y-4">
+          <div>
+            <label class="block text-slate-700 text-xs font-bold mb-1.5">Tu Nombre Completo</label>
+            <input
+              type="text"
+              required
+              id="plan-client-name"
+              placeholder="Tu nombre completo"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 placeholder:text-slate-400 focus:outline-hidden focus:border-softopia-blue focus:bg-white"
+            />
+          </div>
+
+          <div>
+            <label class="block text-slate-750 text-xs font-bold mb-1.5">Nombre de tu Negocio / Empresa</label>
+            <input
+              type="text"
+              required
+              id="plan-client-company"
+              placeholder="Ejm: Minimarket Familiar"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 placeholder:text-slate-400 focus:outline-hidden focus:border-softopia-blue focus:bg-white post-vertical-selector"
+            />
+          </div>
+
+          <div>
+            <label class="block text-slate-755 text-xs font-bold mb-1.5">Giro de Negocio / Rubro Comercial</label>
+            <select
+              id="plan-client-business"
+              required
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-800 focus:outline-hidden focus:border-softopia-blue focus:bg-white"
+            >
+              <option value="">-- Elige un rubro --</option>
+              <option value="Minimarket o Bodega">Minimarket o Bodega</option>
+              <option value="Ferretería">Ferretería o Construcción</option>
+              <option value="Gastronomía (Restaurante o Café)">Gastronomía (Restaurante o Café)</option>
+              <option value="Servicios Profesionales">Servicios y Oficinas</option>
+              <option value="Otros">Otros Rubros</option>
+            </select>
+          </div>
+
+          <div class="pt-3 space-y-2">
+            <button
+              type="submit"
+              class="w-full bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md active:scale-98 cursor-pointer"
+            >
+              <span>Enviar Cotización por WhatsApp</span>
+            </button>
+            <p class="text-[9.5px] text-slate-500 text-center font-medium leading-relaxed">
+              No mostramos tu número ni del asesor en pantalla por privacidad. Al presionar se abrirá un chat directo con nuestro asesor de guardia con toda la información cargada.
+            </p>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
