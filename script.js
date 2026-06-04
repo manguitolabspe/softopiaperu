@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupPricingPlanBefriendQuotes();
   setupContactFormHandler();
   setupSoftiBot();
+  setupInteractiveLicensesSection();
 });
 
 function setupHeaderScroll() {
@@ -1107,4 +1108,340 @@ function clearError(inputElement, theme = 'light') {
     inputElement.classList.remove('border-rose-500', 'focus:border-rose-500');
     inputElement.classList.add('border-slate-200', 'focus:border-softopia-blue');
   }
+}
+
+function setupInteractiveLicensesSection() {
+  // --- MICROSOFT 365 HANDLERS ---
+  const m365PersonalBtn = document.getElementById('m365-opt-personal');
+  const m365FamiliarBtn = document.getElementById('m365-opt-familiar');
+  const m365Time1 = document.getElementById('m365-time-1');
+  const m365Time2 = document.getElementById('m365-time-2');
+  const m365Time3 = document.getElementById('m365-time-3');
+  const m365PriceLabel = document.getElementById('m365-price');
+  const m365SavingsLabel = document.getElementById('m365-savings');
+  const m365WaBtn = document.getElementById('m365-wa-btn');
+
+  let m365SelectedPlan = 'personal'; // personal or familiar
+  let m365SelectedTime = 1; // 1, 2, or 3 years
+
+  function updateMicrosoft365() {
+    let basePrice = 150;
+    let descPlan = "Personal";
+    let savings = "Precio Súper Competitivo";
+
+    if (m365SelectedPlan === 'personal') {
+      if (m365SelectedTime === 1) {
+        basePrice = 150;
+        savings = "Pago de Licencia Anual";
+      } else if (m365SelectedTime === 2) {
+        basePrice = 280;
+        savings = "Ahorras S/ 20 en 2 Años";
+      } else {
+        basePrice = 390;
+        savings = "Ahorras S/ 60 en 3 Años";
+      }
+      descPlan = m365SelectedTime === 1 ? "Personal por 1 Año" : (m365SelectedTime === 2 ? "Personal por 2 Años" : "Personal por 3 Años");
+    } else {
+      if (m365SelectedTime === 1) {
+        basePrice = 250;
+        savings = "Licencia de hasta 6 Usuarios";
+      } else if (m365SelectedTime === 2) {
+        basePrice = 460;
+        savings = "Ahorras S/ 40 en 2 Años";
+      } else {
+        basePrice = 650;
+        savings = "Ahorras S/ 100 en 3 Años";
+      }
+      descPlan = m365SelectedTime === 1 ? "Familiar por 1 Año (6 Cuentas)" : (m365SelectedTime === 2 ? "Familiar por 2 Años (6 Cuentas)" : "Familiar por 3 Años (6 Cuentas)");
+    }
+
+    if (m365PriceLabel) m365PriceLabel.innerText = basePrice;
+    if (m365SavingsLabel) m365SavingsLabel.innerText = savings;
+
+    if (m365WaBtn) {
+      m365WaBtn.href = `https://wa.me/51923992629?text=Hola%20Softopia%20Perú.%20Quiero%20adquirir%20la%20licencia%20original%20de%20Microsoft%20365%20${encodeURIComponent(descPlan)}%20al%20precio%20de%20S/%20${basePrice}.`;
+    }
+  }
+
+  if (m365PersonalBtn && m365FamiliarBtn) {
+    m365PersonalBtn.addEventListener('click', () => {
+      m365SelectedPlan = 'personal';
+      m365PersonalBtn.className = "m365-plan-btn py-2 px-1 text-[10px] font-black rounded-lg border border-sky-500 bg-sky-50 text-sky-800 transition-all cursor-pointer";
+      m365FamiliarBtn.className = "m365-plan-btn py-2 px-1 text-[10px] font-black rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-55 transition-all cursor-pointer";
+      updateMicrosoft365();
+    });
+    m365FamiliarBtn.addEventListener('click', () => {
+      m365SelectedPlan = 'familiar';
+      m365FamiliarBtn.className = "m365-plan-btn py-2 px-1 text-[10px] font-black rounded-lg border border-sky-500 bg-sky-50 text-sky-800 transition-all cursor-pointer";
+      m365PersonalBtn.className = "m365-plan-btn py-2 px-1 text-[10px] font-black rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-55 transition-all cursor-pointer";
+      updateMicrosoft365();
+    });
+  }
+
+  function handleM365TimeClick(button, timeValue, allBtns) {
+    m365SelectedTime = timeValue;
+    allBtns.forEach(b => {
+      if (b) b.className = "m365-time-btn py-1.5 text-[9.5px] font-black rounded-lg border border-slate-200 text-slate-650 hover:bg-slate-100/70 transition-all cursor-pointer";
+    });
+    if (button) button.className = "m365-time-btn py-1.5 text-[9.5px] font-black rounded-lg border border-slate-900 bg-slate-900 text-white transition-all cursor-pointer";
+    updateMicrosoft365();
+  }
+
+  const m365TimeBtns = [m365Time1, m365Time2, m365Time3];
+  if (m365Time1) m365Time1.addEventListener('click', () => handleM365TimeClick(m365Time1, 1, m365TimeBtns));
+  if (m365Time2) m365Time2.addEventListener('click', () => handleM365TimeClick(m365Time2, 2, m365TimeBtns));
+  if (m365Time3) m365Time3.addEventListener('click', () => handleM365TimeClick(m365Time3, 3, m365TimeBtns));
+
+
+  // --- ESET NOD32 ANTIVIRUS HANDLERS ---
+  const esetOpt1 = document.getElementById('eset-opt-1');
+  const esetOpt3 = document.getElementById('eset-opt-3');
+  const esetOpt5 = document.getElementById('eset-opt-5');
+  const esetTime1 = document.getElementById('eset-time-1');
+  const esetTime2 = document.getElementById('eset-time-2');
+  const esetTime3 = document.getElementById('eset-time-3');
+  const esetPriceLabel = document.getElementById('eset-price');
+  const esetSavingsLabel = document.getElementById('eset-savings');
+  const esetWaBtn = document.getElementById('eset-wa-btn');
+
+  let esetDevices = 1; // 1, 3, or 5
+  let esetTime = 1; // 1, 2, or 3 years
+
+  function updateEsetNOD32() {
+    let rate = 49;
+    let savings = "Protección Liviana";
+
+    if (esetDevices === 1) {
+      if (esetTime === 1) { rate = 49; savings = "Licencia por 1 Año"; }
+      else if (esetTime === 2) { rate = 89; savings = "Ahorras S/ 9 en 2 Años"; }
+      else { rate = 119; savings = "Ahorras S/ 28 en 3 Años"; }
+    } else if (esetDevices === 3) {
+      if (esetTime === 1) { rate = 99; savings = "Promo Especial 3 PCs"; }
+      else if (esetTime === 2) { rate = 179; savings = "Ahorras S/ 19 en 2 Años"; }
+      else { rate = 239; savings = "Ahorras S/ 58 en 3 Años"; }
+    } else {
+      if (esetTime === 1) { rate = 149; savings = "Mega kit de 5 PCs"; }
+      else if (esetTime === 2) { rate = 269; savings = "Ahorras S/ 29 en 2 Años"; }
+      else { rate = 359; savings = "Ahorras S/ 88 en 3 Años"; }
+    }
+
+    if (esetPriceLabel) esetPriceLabel.innerText = rate;
+    if (esetSavingsLabel) esetSavingsLabel.innerText = savings;
+
+    if (esetWaBtn) {
+      esetWaBtn.href = `https://wa.me/51923992629?text=Hola%20Softopia%20Perú.%20Me%20interesa%20la%20licencia%20original%20de%20ESET%20NOD32%20Antivirus%20para%20${esetDevices}%2520${esetDevices === 1 ? 'PC' : 'PCs'}%20por%20${esetTime}%2520${esetTime === 1 ? 'Año' : 'Años'}%20al%20precio%20de%20S/%2520${rate}.`;
+    }
+  }
+
+  const esetDeviceBtns = [esetOpt1, esetOpt3, esetOpt5];
+  function selectEsetDevice(btn, count) {
+    esetDevices = count;
+    esetDeviceBtns.forEach(b => {
+      if (b) b.className = "eset-device-btn py-2 text-[10px] font-black rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800 transition-all cursor-pointer";
+    });
+    if (btn) btn.className = "eset-device-btn py-1.5 text-[10px] font-black rounded-lg border border-teal-500 bg-teal-50 text-teal-850 transition-all cursor-pointer";
+    updateEsetNOD32();
+  }
+  if (esetOpt1) esetOpt1.addEventListener('click', () => selectEsetDevice(esetOpt1, 1));
+  if (esetOpt3) esetOpt3.addEventListener('click', () => selectEsetDevice(esetOpt3, 3));
+  if (esetOpt5) esetOpt5.addEventListener('click', () => selectEsetDevice(esetOpt5, 5));
+
+  const esetTimeBtns = [esetTime1, esetTime2, esetTime3];
+  function selectEsetTime(btn, years) {
+    esetTime = years;
+    esetTimeBtns.forEach(b => {
+      if (b) b.className = "eset-time-btn py-1.5 text-[9.5px] font-black rounded-lg border border-slate-200 text-slate-650 hover:bg-slate-100/70 transition-all cursor-pointer";
+    });
+    if (btn) btn.className = "eset-time-btn py-1.5 text-[9.5px] font-black rounded-lg border border-slate-900 bg-slate-900 text-white transition-all cursor-pointer";
+    updateEsetNOD32();
+  }
+  if (esetTime1) esetTime1.addEventListener('click', () => selectEsetTime(esetTime1, 1));
+  if (esetTime2) esetTime2.addEventListener('click', () => selectEsetTime(esetTime2, 2));
+  if (esetTime3) esetTime3.addEventListener('click', () => selectEsetTime(esetTime3, 3));
+
+
+  // --- AUTODESK HANDLERS ---
+  const autodeskTime1 = document.getElementById('autodesk-time-1');
+  const autodeskTime2 = document.getElementById('autodesk-time-2');
+  const autodeskTime3 = document.getElementById('autodesk-time-3');
+  const autodeskPriceLabel = document.getElementById('autodesk-price');
+  const autodeskSavingsLabel = document.getElementById('autodesk-savings');
+  const autodeskWaBtn = document.getElementById('autodesk-wa-btn');
+
+  let autodeskTime = 1;
+
+  function updateAutodesk() {
+    let rate = 450;
+    let savings = "Activación Directa Oficial";
+
+    if (autodeskTime === 1) {
+      rate = 450;
+      savings = "Suite All Apps 1 Año";
+    } else if (autodeskTime === 2) {
+      rate = 850;
+      savings = "Ahorras S/ 50 en 2 Años";
+    } else {
+      rate = 1190;
+      savings = "Ahorras S/ 160 en 3 Años";
+    }
+
+    if (autodeskPriceLabel) autodeskPriceLabel.innerText = rate;
+    if (autodeskSavingsLabel) autodeskSavingsLabel.innerText = savings;
+
+    if (autodeskWaBtn) {
+      autodeskWaBtn.href = `https://wa.me/51923992629?text=Hola%20Softopia%20Perú.%20Deseo%20crear%20mi%20licencia%20de%20Autodesk%20Suite%20Completa%20por%20${autodeskTime}%252520${autodeskTime === 1 ? 'Año' : 'Años'}%20al%20precio%20de%20S/%252520${rate}%20con%20activación%20garantizada.`;
+    }
+  }
+
+  const autodeskTimeBtns = [autodeskTime1, autodeskTime2, autodeskTime3];
+  function selectAutodeskTime(btn, years) {
+    autodeskTime = years;
+    autodeskTimeBtns.forEach(b => {
+      if (b) b.className = "autodesk-time-btn py-1.5 text-[9.5px] font-black rounded-lg border border-slate-200 text-slate-650 hover:bg-slate-100/70 transition-all cursor-pointer";
+    });
+    if (btn) btn.className = "autodesk-time-btn py-1.5 text-[9.5px] font-black rounded-lg border border-slate-900 bg-slate-900 text-white transition-all cursor-pointer";
+    updateAutodesk();
+  }
+  if (autodeskTime1) autodeskTime1.addEventListener('click', () => selectAutodeskTime(autodeskTime1, 1));
+  if (autodeskTime2) autodeskTime2.addEventListener('click', () => selectAutodeskTime(autodeskTime2, 2));
+  if (autodeskTime3) autodeskTime3.addEventListener('click', () => selectAutodeskTime(autodeskTime3, 3));
+
+
+  // --- CANVA PRO EDU HANDLERS ---
+  const canvaOpt1 = document.getElementById('canva-opt-1');
+  const canvaOpt5 = document.getElementById('canva-opt-5');
+  const canvaPriceLabel = document.getElementById('canva-price');
+  const canvaSavingsLabel = document.getElementById('canva-savings');
+  const canvaWaBtn = document.getElementById('canva-wa-btn');
+
+  let canvaAccounts = 1;
+
+  function updateCanva() {
+    let rate = 39;
+    let label = "1 Cuenta";
+
+    if (canvaAccounts === 1) {
+      rate = 39;
+      label = "1 Cuenta Individual";
+    } else {
+      rate = 99;
+      label = "Muti-Pack de 5 Cuentas";
+    }
+
+    if (canvaPriceLabel) canvaPriceLabel.innerText = rate;
+    if (canvaSavingsLabel) canvaSavingsLabel.innerText = canvaAccounts === 1 ? "Acceso Garantizado" : "Super Ahorro Pack";
+
+    if (canvaWaBtn) {
+      canvaWaBtn.href = `https://wa.me/51923992629?text=Hola%20Softopia%20Perú.%20Quiero%2520comprar%20Canva%20Pro%20Edu%20para%20${encodeURIComponent(label)}%20por%20S/%2520${rate}%20con%20activación%20garantizada.`;
+    }
+  }
+
+  if (canvaOpt1 && canvaOpt5) {
+    canvaOpt1.addEventListener('click', () => {
+      canvaAccounts = 1;
+      canvaOpt1.className = "canva-opt-btn py-2 text-[10px] font-black rounded-lg border border-rose-500 bg-rose-50 text-rose-850 transition-all cursor-pointer";
+      canvaOpt5.className = "canva-opt-btn py-2 text-[10px] font-black rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800 transition-all cursor-pointer";
+      updateCanva();
+    });
+    canvaOpt5.addEventListener('click', () => {
+      canvaAccounts = 5;
+      canvaOpt5.className = "canva-opt-btn py-2 text-[10px] font-black rounded-lg border border-rose-500 bg-rose-50 text-rose-850 transition-all cursor-pointer";
+      canvaOpt1.className = "canva-opt-btn py-2 text-[10px] font-black rounded-lg border border-slate-200 text-slate-500 hover:text-slate-800 transition-all cursor-pointer";
+      updateCanva();
+    });
+  }
+
+
+  // --- CAMERAS KIT HANDLERS ---
+  const camOpt2 = document.getElementById('cam-opt-2');
+  const camOpt4 = document.getElementById('cam-opt-4');
+  const camOpt8 = document.getElementById('cam-opt-8');
+  const camPriceLabel = document.getElementById('cam-price');
+  const camSavingsLabel = document.getElementById('cam-savings');
+  const camWaBtn = document.getElementById('cam-wa-btn');
+
+  let camerasCount = 2;
+
+  function updateCameras() {
+    let rate = 450;
+    let label = "Kit de 2 Cámaras + DVR";
+
+    if (camerasCount === 2) {
+      rate = 450;
+      label = "Kit de 2 Cámaras de Seguridad";
+    } else if (camerasCount === 4) {
+      rate = 790;
+      label = "Kit de 4 Cámaras de Seguridad";
+    } else {
+      rate = 1450;
+      label = "Kit de 8 Cámaras de Seguridad";
+    }
+
+    if (camPriceLabel) camPriceLabel.innerText = rate;
+    if (camSavingsLabel) camSavingsLabel.innerText = camerasCount === 2 ? "Instalación básica incluida" : (camerasCount === 4 ? "Súper oferta comercial" : "Protección completa industrial");
+
+    if (camWaBtn) {
+      camWaBtn.href = `https://wa.me/51923992629?text=Hola%20Softopia%20Perú.%20Quiero%20solicitar%20la%20instalación%20profesional%20del%20${encodeURIComponent(label)}%20al%20precio%20de%20S/%2520${rate}%20en%20mi%2520local.`;
+    }
+  }
+
+  const camBtns = [camOpt2, camOpt4, camOpt8];
+  function selectCamKit(btn, count) {
+    camerasCount = count;
+    camBtns.forEach(b => {
+      if (b) b.className = "cam-kit-btn py-2.5 px-1 text-[11.5px] font-black rounded-lg border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900 transition-all cursor-pointer";
+    });
+    if (btn) btn.className = "cam-kit-btn py-2.5 px-1 text-[11.5px] font-black rounded-lg border border-orange-500 bg-orange-500/10 text-white transition-all cursor-pointer";
+    updateCameras();
+  }
+  if (camOpt2) camOpt2.addEventListener('click', () => selectCamKit(camOpt2, 2));
+  if (camOpt4) camOpt4.addEventListener('click', () => selectCamKit(camOpt4, 4));
+  if (camOpt8) camOpt8.addEventListener('click', () => selectCamKit(camOpt8, 8));
+
+
+  // --- SAAS SOLUTIONS TAB SWITCHER ---
+  const saasTabs = [
+    { buttonId: 'saas-tab-carta', cardId: 'saas-card-carta', activeClass: 'border-orange-500 bg-orange-50 text-orange-600 shadow-sm' },
+    { buttonId: 'saas-tab-iglesia', cardId: 'saas-card-iglesia', activeClass: 'border-amber-500 bg-amber-50 text-amber-700 shadow-sm' },
+    { buttonId: 'saas-tab-barber', cardId: 'saas-card-barber', activeClass: 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-sm' },
+    { buttonId: 'saas-tab-hotel', cardId: 'saas-card-hotel', activeClass: 'border-teal-500 bg-teal-50 text-teal-700 shadow-sm' },
+    { buttonId: 'saas-tab-dental', cardId: 'saas-card-dental', activeClass: 'border-sky-500 bg-sky-50 text-sky-700 shadow-sm' },
+    { buttonId: 'saas-tab-gym', cardId: 'saas-card-gym', activeClass: 'border-emerald-500 bg-emerald-50 text-emerald-700 shadow-sm' }
+  ];
+
+  const inactiveBtnClass = "border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50";
+
+  saasTabs.forEach(tab => {
+    const btn = document.getElementById(tab.buttonId);
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Deactivate all tabs
+        saasTabs.forEach(t => {
+          const b = document.getElementById(t.buttonId);
+          const c = document.getElementById(t.cardId);
+          if (b) {
+            b.className = `saas-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-black transition-all cursor-pointer whitespace-nowrap shrink-0 ${inactiveBtnClass}`;
+          }
+          if (c) {
+            c.classList.add('hidden');
+          }
+        });
+
+        // Activate selected tab
+        btn.className = `saas-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-black transition-all cursor-pointer whitespace-nowrap shrink-0 ${tab.activeClass}`;
+        const targetCard = document.getElementById(tab.cardId);
+        if (targetCard) {
+          targetCard.classList.remove('hidden');
+        }
+      });
+    }
+  });
+
+
+  // Trigger preliminary runs to back-bake URLs
+  updateMicrosoft365();
+  updateEsetNOD32();
+  updateAutodesk();
+  updateCanva();
+  updateCameras();
 }
