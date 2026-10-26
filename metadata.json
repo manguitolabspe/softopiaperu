@@ -1,0 +1,8 @@
+{
+  "name": "Remix Softopia Perú",
+  "description": "Landing page interactiva y profesional para el sistema de facturación y gestión empresarial Softopia Perú.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
