@@ -1,5 +1,6 @@
 const SOFTIBOT_FAQ = {
   main: [
+    { text: "Ingresar al Sistema (Login) 🚀", key: "portal_login", icon: "fa-arrow-right-to-bracket" },
     { text: "Sistemas de Ventas y Facturación", key: "sistemas", icon: "fa-file-invoice-dollar" },
     { text: "Instalación de Cámaras de Seguridad", key: "cameras", icon: "fa-video" },
     { text: "Licencias de Software Originales", key: "licensing", icon: "fa-key" },
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHeaderScroll();
   setupMobileDrawer();
   setupMascotTriggers();
+  setupModuleModal();
   setupBillingCycleToggler();
   setupPricingPlanBefriendQuotes();
   setupContactFormHandler();
@@ -587,6 +589,32 @@ function setupSoftiBot() {
       return;
     }
 
+    if (opt.key === 'portal_login') {
+      appendTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        appendBotMessage("Puedes ingresar directamente a la plataforma de Facturación Electrónica aquí: <br><br><a href='https://sytemsoftopia.com/sys/login' target='_blank' rel='noopener noreferrer' class='inline-flex items-center gap-1.5 bg-softopia-blue hover:bg-softopia-blue-dark text-white font-bold px-3.5 py-2 rounded-xl text-xs my-1 shadow-sm'><i class='fa-solid fa-arrow-right-to-bracket text-amber-400'></i> Abrir Sistema de Facturación</a><br><br>Si eres un cliente nuevo y deseas credenciales de prueba o demo guiada, te las facilitamos al instante por WhatsApp.");
+        
+        optionsPanel.innerHTML = '';
+        const waLink = document.createElement('a');
+        waLink.target = '_blank';
+        waLink.rel = 'noreferrer';
+        waLink.href = 'https://wa.me/51923992629?text=' + encodeURIComponent('Hola Softopia Perú. Deseo solicitar credenciales demo para probar el sistema de facturación electrónica.');
+        waLink.className = 'w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white p-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-2 transition-all shadow-sm';
+        waLink.innerHTML = '<i class="fa-brands fa-whatsapp text-white text-sm"></i><span>Solicitar Credenciales Demo por WhatsApp</span>';
+        optionsPanel.appendChild(waLink);
+
+        const backBtn = document.createElement('button');
+        backBtn.className = 'w-full text-left bg-slate-50 hover:bg-softopia-blue/5 border border-slate-150 p-2.5 rounded-xl text-xs font-bold text-slate-800 transition-all flex items-center gap-2 cursor-pointer mt-1.5';
+        backBtn.innerHTML = '<i class="fa-solid fa-arrow-left text-slate-500 text-xs shrink-0"></i><span>Volver al menú principal</span>';
+        backBtn.addEventListener('click', () => {
+          renderBotMenu('main');
+        });
+        optionsPanel.appendChild(backBtn);
+      }, 500);
+      return;
+    }
+
     if (opt.key === 'whatsapp_general') {
       appendTypingIndicator();
       setTimeout(() => {
@@ -669,8 +697,13 @@ function setupSoftiBot() {
       setTimeout(() => {
         removeTypingIndicator();
 
+        // 0. Matches Login / Portal / Ingreso al sistema
+        if (clean.includes('login') || clean.includes('ingresar') || clean.includes('acceso') || clean.includes('entrar') || clean.includes('sytemsoftopia') || clean.includes('iniciar sesion') || clean.includes('portal') || clean.includes('clave')) {
+          appendBotMessage("Puedes ingresar directamente al portal de Facturación Electrónica aquí: <br><br><a href='https://sytemsoftopia.com/sys/login' target='_blank' rel='noopener noreferrer' class='inline-flex items-center gap-1.5 bg-softopia-blue hover:bg-softopia-blue-dark text-white font-bold px-3.5 py-2 rounded-xl text-xs my-1 shadow-sm'><i class='fa-solid fa-arrow-right-to-bracket text-amber-400'></i> Abrir Sistema de Facturación</a><br><br>Si necesitas tus credenciales o deseas una demo guiada, te atendemos por WhatsApp.");
+          renderAfterAnswerMenu('sistemas', 'sistemas_sunat');
+        }
         // 1. Matches cameras and security monitoring
-        if (clean.includes('camara') || clean.includes('seguridad') || clean.includes('vigilancia') || clean.includes('hikvision') || clean.includes('imou') || clean.includes('ezviz') || clean.includes('grabar') || clean.includes('video') || clean.includes('monitoreo')) {
+        else if (clean.includes('camara') || clean.includes('seguridad') || clean.includes('vigilancia') || clean.includes('hikvision') || clean.includes('imou') || clean.includes('ezviz') || clean.includes('grabar') || clean.includes('video') || clean.includes('monitoreo')) {
           if (clean.includes('marca') || clean.includes('modelo')) {
             appendBotMessage(SOFTIBOT_ANSWERS.cameras_brands.answer);
             renderAfterAnswerMenu('cameras', 'cameras_brands');
@@ -954,18 +987,26 @@ function setupContactFormHandler() {
       return;
     }
 
-    const name = document.getElementById('sender-name').value;
-    const phone = document.getElementById('sender-phone').value;
-    const email = document.getElementById('sender-email').value;
+    const name = document.getElementById('sender-name').value.trim();
+    const phone = document.getElementById('sender-phone').value.trim();
+    const email = document.getElementById('sender-email').value.trim();
+    const msg = document.getElementById('sender-message').value.trim();
+
+    const waMessage = `¡Hola Softopia Perú! Me contacto desde el formulario web oficial.\n\n*Datos del Solicitante:*\n- *Nombre:* ${name}\n- *Celular WhatsApp:* ${phone || 'No especificado'}\n- *Correo:* ${email}\n- *Consulta:* ${msg || 'Solicito información para implementar el sistema en mi negocio'}\n\n_Deseo coordinar mi demo gratuita y conocer las ofertas vigentes._`;
+
+    const waUrl = `https://wa.me/51923992629?text=${encodeURIComponent(waMessage)}`;
+
+    // Auto open WhatsApp directly to eliminate conversion friction
+    window.open(waUrl, '_blank');
 
     if (overlay) {
       if (overlayMsg) {
-        overlayMsg.textContent = `Hemos registrado la consulta para ${name} (${email}). Un especialista asignado de la zona se comunicará contigo vía telefónica o WhatsApp para coordinar tu asesoría.`;
+        overlayMsg.innerHTML = `¡Gracias <b>${name}</b>! Te estamos conectando con un asesor especializado vía WhatsApp.<br><br>Si tu navegador bloqueó la ventana emergente, presiona el botón a continuación:<br><br><a href="${waUrl}" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg transition-all"><i class="fa-brands fa-whatsapp text-base"></i> Abrir WhatsApp Ahora</a>`;
       }
       overlay.classList.remove('hidden');
     }
 
-    updateMascotSpeech(`<i class="fa-solid fa-envelope text-softopia-blue mr-1.5"></i> Excelente consulta ${name}. He procesado tu requerimiento de soporte técnico en nuestra cola centralizada de prioridades.`);
+    updateMascotSpeech(`<i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> ¡Excelente, ${name}! He enviado tu solicitud directo al equipo comercial en WhatsApp para atenderte en minutos.`);
   });
 }
 
@@ -1444,4 +1485,234 @@ function setupInteractiveLicensesSection() {
   updateAutodesk();
   updateCanva();
   updateCameras();
+}
+
+const MODULES_DETAIL_DATA = {
+  pos: {
+    title: "Punto de Venta (POS Rápido)",
+    badge: "ALTA VELOCIDAD",
+    badgeClass: "bg-blue-50 text-softopia-blue border-blue-200",
+    color: "#0f46bd",
+    icon: "fa-cash-register",
+    iconBg: "bg-blue-50 text-softopia-blue",
+    description: "Ventas ágiles, rápidas y fluidas diseñadas para agilizar la atención en caja sin colas ni retrasos en bodegas, minimarkets, ferreterías y restaurantes.",
+    features: [
+      "Búsqueda instantánea de productos por nombre, código de barras o categoría.",
+      "Múltiples métodos de pago en una sola venta: Efectivo, Tarjeta, Yape, Plin y transferencias.",
+      "Apertura y arqueo de caja con reporte de cierre X y Z, control de turnos y faltantes/sobrantes.",
+      "Compatible con impresoras térmicas (58mm / 80mm), gavetas de dinero y balanzas de pesaje.",
+      "Guardado temporal de ventas pendientes y emisión ultrarrápida en menos de 3 segundos."
+    ],
+    devices: ["Laptops y PCs de Escritorio", "Tablets y Celulares Android", "Ticketeras y Gavetas"],
+    speech: "💡 Módulo Punto de Venta (POS): Búsquedas veloces, cobros con tarjeta, monederos Yape/Plin, arqueo de caja e inventario simulado.",
+    waText: "Hola Softopia Perú. Quiero solicitar una demostración guiada del módulo Punto de Venta (POS)."
+  },
+  facturacion: {
+    title: "Facturación Electrónica SUNAT",
+    badge: "HOMOLOGADO SUNAT",
+    badgeClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    color: "#24b248",
+    icon: "fa-file-invoice-dollar",
+    iconBg: "bg-emerald-50 text-emerald-600",
+    description: "Emisión legal e inmediata de comprobantes electrónicos con sincronización automática y segura a servidores SUNAT vía PSE/OSE sin riesgo de multas.",
+    features: [
+      "Emisión de Facturas, Boletas de Venta, Notas de Crédito, Débito y Guías de Remisión Electrónica.",
+      "Envío automático del comprobante en PDF y XML al cliente por WhatsApp o correo electrónico.",
+      "Generación de código QR y representación impresa en formato ticket, A4 y A5.",
+      "Comunicación de baja y anulación de comprobantes dentro del plazo de ley con acuse CDR.",
+      "Certificado digital tributario SUNAT 100% bonificado por 1 año en planes anuales."
+    ],
+    devices: ["100% en la Nube", "Sincronización Inmediata SUNAT", "Descarga de CDR y XML"],
+    speech: "📄 Módulo Facturación Electrónica: Totalmente homologado por SUNAT. Genera Facturas, Boletas, Notas y Guías seguras en segundos.",
+    waText: "Hola Softopia Perú. Deseo cotizar el módulo de Facturación Electrónica homologado por SUNAT."
+  },
+  inventario: {
+    title: "Control de Inventario & Kardex",
+    badge: "KARDEX VALORIZADO",
+    badgeClass: "bg-amber-50 text-amber-800 border-amber-200",
+    color: "#ffab00",
+    icon: "fa-boxes-stacked",
+    iconBg: "bg-amber-50 text-amber-600",
+    description: "Supervisa tus existencias de forma rigurosa en tiempo real. Evita pérdidas, robos y entérate de mermas de inmediato mediante historiales detallados.",
+    features: [
+      "Kardex valorizado en tiempo real calculado por el método de promedio ponderado.",
+      "Alertas automáticas de stock mínimo para evitar desabastecimientos y roturas de inventario.",
+      "Control de almacenes múltiples y traslados de mercadería con guías internas de remisión.",
+      "Seguimiento riguroso de fechas de vencimiento, lotes y números de serie.",
+      "Carga y actualización masiva de precios e inventario mediante plantillas Excel en segundos."
+    ],
+    devices: ["Historial de Entradas y Salidas", "Alertas de Stock en Celular", "Exportación a Excel"],
+    speech: "📦 Módulo Control de Inventario: Stock mínimo, alertas de desabastecimiento, kardex valorizado y almacenes por local comercial.",
+    waText: "Hola Softopia Perú. Me interesa conocer a fondo el módulo de Control de Inventario y Kardex."
+  },
+  clientes: {
+    title: "Clientes & Proveedores (RENIEC / SUNAT)",
+    badge: "VALIDACIÓN OFICIAL",
+    badgeClass: "bg-purple-50 text-purple-700 border-purple-200",
+    color: "#701ab0",
+    icon: "fa-users",
+    iconBg: "bg-purple-50 text-purple-600",
+    description: "Mantén tu cartera comercial organizada. Consulta en vivo las bases de datos de RENIEC y SUNAT con solo digitar el número de documento.",
+    features: [
+      "Consulta instantánea de RUC a SUNAT: autocompleta Razón Social, estado habido y domicilio fiscal.",
+      "Consulta directa de DNI a RENIEC: obtiene nombres y apellidos de personas naturales al instante.",
+      "Límites de crédito autorizados por cliente para controlar ventas al fiado con tope de deuda.",
+      "Historial completo de compras, frecuencia de consumo y preferencias de cada cliente.",
+      "Directorio de proveedores con registro de órdenes de compra e historial de costos."
+    ],
+    devices: ["Validación Automática DNI/RUC", "Historial de Consumo", "Cartera de Clientes"],
+    speech: "👥 Módulo Clientes y Proveedores: Cartera organizada con validación de DNI en RENIEC y RUC en SUNAT en 1 clic.",
+    waText: "Hola Softopia Perú. Quisiera información sobre la validación de DNI y RUC en el sistema."
+  },
+  cobros: {
+    title: "Cuentas por Cobrar & Pagar",
+    badge: "CONTROL FINANCIERO",
+    badgeClass: "bg-orange-50 text-orange-700 border-orange-200",
+    color: "#f04e23",
+    icon: "fa-money-bill-trend-up",
+    iconBg: "bg-orange-50 text-softopia-orange",
+    description: "Supervisa plazos de créditos comerciales para cobranzas oportunas con alertas de morosidad y evitar descapitalizaciones de caja operativa.",
+    features: [
+      "Registro de ventas al crédito con programación de cuotas y fechas límites de vencimiento.",
+      "Control de abonos parciales con emisión de comprobante de ingreso y saldo restante automático.",
+      "Semáforo de cuentas por cobrar con alertas visuales de facturas vencidas y por vencer.",
+      "Envío de estados de cuenta detallados por WhatsApp o correo electrónico al cliente.",
+      "Programación de pagos a proveedores para optimizar el flujo de caja disponible."
+    ],
+    devices: ["Control de Deudas y Cuotas", "Alertas de Vencimiento", "Recibos de Abono"],
+    speech: "📈 Módulo Cobros y Cartera: Registra abonos parciales, supervisa deudas a crédito y envía estados de cuenta automáticos.",
+    waText: "Hola Softopia Perú. Deseo cotizar el módulo de Cuentas por Cobrar y Gestión de Cobranzas."
+  },
+  reportes: {
+    title: "Reportes Inteligentes & Gráficos",
+    badge: "AUTO REPORTES",
+    badgeClass: "bg-cyan-50 text-cyan-800 border-cyan-200",
+    color: "#00b0ff",
+    icon: "fa-chart-pie",
+    iconBg: "bg-cyan-50 text-cyan-600",
+    description: "Visualización de indicadores comerciales mediante KPIs claros que ayudan a dueños de negocio del Perú a tomar decisiones fundamentadas en datos reales.",
+    features: [
+      "Panel gerencial con gráficos interactivos de ventas por día, semana, mes, sucursal y vendedor.",
+      "Reporte detallado de utilidad neta y ganancia real calculada por costo de adquisición de mercadería.",
+      "Ranking de los productos más vendidos (Top 10 y análisis de rotación de inventario).",
+      "Balance contable de compras vs. ventas con estimación preliminar de liquidación de IGV.",
+      "Exportación ágil de todos los reportes a formatos Excel y PDF listos para contabilidad."
+    ],
+    devices: ["Dashboard en Tiempo Real", "Exportación a Excel / PDF", "Cálculo de Utilidad"],
+    speech: "📊 Módulo Reportes Gerenciales: Gráficos de ventas anuales, reporte de utilidad neta, balance de compras e IGV, y exportación a Excel.",
+    waText: "Hola Softopia Perú. Quiero conocer los reportes inteligentes y gráficos gerenciales del sistema."
+  }
+};
+
+function setupModuleModal() {
+  const modal = document.getElementById('module-detail-modal');
+  const closeBtn = document.getElementById('close-module-modal');
+  const ribbon = document.getElementById('mod-modal-ribbon');
+  const iconContainer = document.getElementById('mod-modal-icon-container');
+  const iconEl = document.getElementById('mod-modal-icon');
+  const badgeEl = document.getElementById('mod-modal-badge');
+  const titleEl = document.getElementById('mod-modal-title');
+  const descEl = document.getElementById('mod-modal-desc');
+  const featuresList = document.getElementById('mod-modal-features');
+  const devicesContainer = document.getElementById('mod-modal-devices');
+  const waBtn = document.getElementById('mod-modal-wa-btn');
+
+  if (!modal) return;
+
+  const moduleBtns = document.querySelectorAll('.module-icon-btn');
+  moduleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modKey = btn.getAttribute('data-module');
+      const data = MODULES_DETAIL_DATA[modKey];
+      if (!data) return;
+
+      // Update Ribbon & Icon
+      if (ribbon) ribbon.style.backgroundColor = data.color;
+      if (iconContainer) {
+        iconContainer.className = `h-13 w-13 rounded-2xl flex items-center justify-center text-2xl shadow-xs shrink-0 ${data.iconBg}`;
+      }
+      if (iconEl) {
+        iconEl.className = `fa-solid ${data.icon}`;
+      }
+
+      // Update Badge
+      if (badgeEl) {
+        badgeEl.textContent = data.badge;
+        badgeEl.className = `text-[9px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-block mb-1 border ${data.badgeClass}`;
+      }
+
+      // Update Title & Description
+      if (titleEl) titleEl.textContent = data.title;
+      if (descEl) descEl.textContent = data.description;
+
+      // Update Features List
+      if (featuresList) {
+        featuresList.innerHTML = '';
+        data.features.forEach(feat => {
+          const li = document.createElement('li');
+          li.className = 'flex items-start gap-2 leading-relaxed';
+          li.innerHTML = `
+            <span class="text-emerald-500 shrink-0 mt-0.5"><i class="fa-solid fa-circle-check text-xs"></i></span>
+            <span>${feat}</span>
+          `;
+          featuresList.appendChild(li);
+        });
+      }
+
+      // Update Devices Chips
+      if (devicesContainer) {
+        devicesContainer.innerHTML = '';
+        data.devices.forEach(dev => {
+          const span = document.createElement('span');
+          span.className = 'bg-slate-100 text-slate-700 text-[10px] font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 border border-slate-200/80';
+          let chipIcon = 'fa-solid fa-check';
+          if (dev.toLowerCase().includes('laptop') || dev.toLowerCase().includes('pc')) chipIcon = 'fa-solid fa-laptop';
+          else if (dev.toLowerCase().includes('tablet') || dev.toLowerCase().includes('celular')) chipIcon = 'fa-solid fa-mobile-screen-button';
+          else if (dev.toLowerCase().includes('ticketera')) chipIcon = 'fa-solid fa-print';
+          else if (dev.toLowerCase().includes('sunat') || dev.toLowerCase().includes('nube')) chipIcon = 'fa-solid fa-cloud';
+          else if (dev.toLowerCase().includes('excel')) chipIcon = 'fa-solid fa-file-excel';
+          
+          span.innerHTML = `<i class="${chipIcon} text-[9px] text-slate-500"></i><span>${dev}</span>`;
+          devicesContainer.appendChild(span);
+        });
+      }
+
+      // Update WhatsApp action button
+      if (waBtn) {
+        waBtn.href = `https://wa.me/51923992629?text=${encodeURIComponent(data.waText)}`;
+      }
+
+      // Sync Mascot speech if available
+      if (typeof updateMascotSpeech === 'function' && data.speech) {
+        updateMascotSpeech(data.speech);
+      }
+
+      // Open modal
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  // Click outside to close
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // ESC key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
 }
