@@ -121,23 +121,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100 py-4 px-6 space-y-3 absolute top-full left-0 right-0 shadow-xl z-30 animate-pop-in">
-          <div className="flex items-center gap-2.5 pb-2.5 border-b border-slate-100">
-            <img
-              src="/softopia_logo.png"
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.onerror = null;
-                target.src = '/favicon.png';
-              }}
-              alt="Softopia Logo"
-              className="h-8 w-auto object-contain"
-            />
-            <div className="flex items-baseline gap-1 leading-none">
-              <span className="text-base font-black text-softopia-blue">Softopia</span>
-              <span className="text-xs font-black text-softopia-orange">Perú</span>
-            </div>
-          </div>
+        <div className="lg:hidden bg-white border-t border-slate-100 py-3 px-6 space-y-2 absolute top-full left-0 right-0 shadow-xl z-30 animate-pop-in">
 
           <a
             href="#inicio"
