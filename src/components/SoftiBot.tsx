@@ -189,68 +189,80 @@ export const SoftiBot: React.FC = () => {
   };
 
   return (
-    <div
-      id="softibot-floating-container"
-      className={`fixed z-50 flex flex-col items-end ${
-        isOpen
-          ? 'bottom-14 sm:bottom-6 right-2 sm:right-6 left-2 sm:left-auto'
-          : 'bottom-16 sm:bottom-6 right-3 sm:right-6'
-      }`}
-    >
-      {/* Interactive Greeting Tooltip */}
-      {showTooltip && !isOpen && (
+    <>
+      {/* Mobile backdrop overlay to close by tapping outside */}
+      {isOpen && (
         <div
-          onClick={handleOpen}
-          className="bg-slate-900 text-white text-xs font-bold px-3.5 py-2.5 rounded-2xl shadow-xl border border-slate-800 flex items-center gap-2 mb-2 animate-tooltip-pulse cursor-pointer max-w-[270px] hover:bg-slate-800 transition-all select-none"
-        >
-          <div className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </div>
-          <span className="leading-snug text-[11px] sm:text-xs">¿Hola! ¿Tienes dudas o consultas? Conversa conmigo aquí 🤖</span>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowTooltip(false);
-            }}
-            className="text-slate-400 hover:text-white ml-auto font-bold h-5 w-5 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-[10px] transition-colors shrink-0"
-          >
-            ✕
-          </button>
-        </div>
+          className="sm:hidden fixed inset-0 bg-slate-950/40 backdrop-blur-[2px] z-40 transition-opacity animate-fade-in"
+          onClick={handleClose}
+          aria-hidden="true"
+        />
       )}
 
-      {/* Main Chat Window Box */}
-      {isOpen && (
-        <div className="w-full sm:w-[370px] max-w-[390px] h-[min(490px,calc(100dvh-75px))] sm:h-[530px] bg-white border border-slate-200 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden mb-0 sm:mb-2.5 animate-pop-in">
-          
-          {/* Header */}
-          <div className="softibot-glass-header px-4 py-3 border-b border-slate-800 flex items-center justify-between shadow-sm shrink-0">
-            <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 bg-softopia-blue rounded-xl flex items-center justify-center text-white relative shadow-sm border border-white/10 shrink-0">
-                <i className="fa-solid fa-robot text-base text-white"></i>
-                <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 bg-emerald-500 border-2 border-slate-900 rounded-full"></div>
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <h4 className="text-xs sm:text-sm font-black text-white leading-none">SoftiBot</h4>
-                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                </div>
-                <span className="text-[9px] text-emerald-400 font-extrabold tracking-wide uppercase mt-0.5 block">
-                  {isTyping ? 'Escribiendo...' : 'Asistente Virtual Activo'}
-                </span>
-              </div>
+      <div
+        id="softibot-floating-container"
+        className={`fixed z-50 flex flex-col items-end ${
+          isOpen
+            ? 'bottom-14 sm:bottom-6 right-2 sm:right-6 left-2 sm:left-auto'
+            : 'bottom-16 sm:bottom-6 right-3 sm:right-6'
+        }`}
+      >
+        {/* Interactive Greeting Tooltip */}
+        {showTooltip && !isOpen && (
+          <div
+            onClick={handleOpen}
+            className="bg-slate-900 text-white text-xs font-bold px-3.5 py-2.5 rounded-2xl shadow-xl border border-slate-800 flex items-center gap-2 mb-2 animate-tooltip-pulse cursor-pointer max-w-[270px] hover:bg-slate-800 transition-all select-none"
+          >
+            <div className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </div>
+            <span className="leading-snug text-[11px] sm:text-xs">¿Hola! ¿Tienes dudas o consultas? Conversa conmigo aquí 🤖</span>
             <button
               type="button"
-              onClick={handleClose}
-              className="h-7 w-7 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-350 hover:text-white flex items-center justify-center border-none cursor-pointer transition-all hover:scale-105"
-              aria-label="Cerrar chat"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowTooltip(false);
+              }}
+              className="text-slate-400 hover:text-white ml-auto font-bold h-5 w-5 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-[10px] transition-colors shrink-0"
             >
-              <i className="fa-solid fa-xmark text-xs"></i>
+              ✕
             </button>
           </div>
+        )}
+
+        {/* Main Chat Window Box */}
+        {isOpen && (
+          <div className="w-full sm:w-[370px] max-w-[390px] h-[min(490px,calc(100dvh-75px))] sm:h-[530px] bg-white border border-slate-200 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden mb-0 sm:mb-2.5 animate-pop-in">
+            
+            {/* Header with prominent close button */}
+            <div className="softibot-glass-header px-4 py-3 border-b border-slate-800 flex items-center justify-between shadow-sm shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="h-9 w-9 bg-softopia-blue rounded-xl flex items-center justify-center text-white relative shadow-sm border border-white/10 shrink-0">
+                  <i className="fa-solid fa-robot text-base text-white"></i>
+                  <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 bg-emerald-500 border-2 border-slate-900 rounded-full"></div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <h4 className="text-xs sm:text-sm font-black text-white leading-none">SoftiBot</h4>
+                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                  </div>
+                  <span className="text-[9px] text-emerald-400 font-extrabold tracking-wide uppercase mt-0.5 block">
+                    {isTyping ? 'Escribiendo...' : 'Asistente Virtual Activo'}
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleClose}
+                className="flex items-center gap-1.5 bg-white/15 hover:bg-rose-500/90 active:bg-rose-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border border-white/20 shadow-sm"
+                aria-label="Cerrar chat"
+                title="Cerrar asistente"
+              >
+                <i className="fa-solid fa-xmark text-xs"></i>
+                <span>Cerrar</span>
+              </button>
+            </div>
 
           {/* Unified Conversation Feed: Messages + Interactive Options immediately beneath */}
           <div className="flex-1 p-3 sm:p-3.5 overflow-y-auto space-y-2.5 bg-slate-50 flex flex-col">
@@ -401,9 +413,16 @@ export const SoftiBot: React.FC = () => {
             </button>
           </form>
 
-          {/* Direct WhatsApp Asesor Quick Bar */}
+          {/* Direct WhatsApp Asesor & Quick Close Bar */}
           <div className="px-3 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between shrink-0 text-[10.5px]">
-            <span className="text-slate-500 font-medium">¿Atención humana en vivo?</span>
+            <button
+              type="button"
+              onClick={handleClose}
+              className="text-slate-500 hover:text-slate-800 active:text-rose-600 font-bold flex items-center gap-1.5 px-2 py-1 rounded-lg hover:bg-slate-200/60 transition-colors cursor-pointer"
+            >
+              <i className="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+              <span>Cerrar chat</span>
+            </button>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Softopia Perú. Deseo conversar con un asesor humano.')}`}
               target="_blank"
@@ -442,5 +461,6 @@ export const SoftiBot: React.FC = () => {
         )}
       </button>
     </div>
+    </>
   );
 };
